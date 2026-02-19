@@ -13,9 +13,69 @@
         <img class="brand-logo" src="./assets/tri2max_logo_lightMode.png" alt="Tri2Max logo" />
         <span class="brand-name">TRI2MAX</span>
       </header>
-      <h1>Sharp heading</h1>
+      <h1>Main Heading</h1>
       <p>A muted shade for the rest of the text.</p>
-      <button id="theme-toggle" type="button" aria-label="Toggle theme">Switch to light mode</button>
+      <div class="button-showcase" aria-label="Button variants">
+        <button id="theme-toggle" class="button primary" type="button" aria-label="Toggle theme">Go to light mode</button>
+        <button class="button secondary" type="button">Open Modal</button>
+      <h2>Still some importance</h2>
+        <button class="button destructive" type="button">Delete universe</button>
+        <p class="inline-action">
+          Inline action:
+          <button class="button inline" type="button">Learn more</button>
+        </p>
+      </div>
+
+      <section class="form-showcase" aria-label="Form elements">
+        <div class="form-row">
+          <label for="field-text">Text Input</label>
+          <input id="field-text" class="control" type="text" value="Tri2Max Project" />
+        </div>
+
+        <div class="form-row">
+          <label for="field-slider">Slider</label>
+          <input id="field-slider" class="control-range" type="range" min="0" max="100" value="60" />
+        </div>
+
+        <div class="form-row">
+          <label for="field-select">Dropdown / Select</label>
+          <select id="field-select" class="control">
+            <option>Option A</option>
+            <option>Option B</option>
+            <option>Option C</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="field-switch">Switch</label>
+          <label class="switch-control" for="field-switch">
+            <input id="field-switch" class="switch-input" type="checkbox" checked />
+            <span class="switch-track" aria-hidden="true"></span>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <span class="row-label">Radio Group</span>
+          <fieldset class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="field-radio" checked />
+              One
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="field-radio" />
+              Two
+            </label>
+          </fieldset>
+        </div>
+
+        <div class="form-row">
+          <label for="field-checkbox">Checkbox</label>
+          <label class="checkbox-control" for="field-checkbox">
+            <input id="field-checkbox" type="checkbox" checked />
+            Accept
+          </label>
+        </div>
+      </section>
     </article>
   </main>
 
@@ -32,7 +92,7 @@
           root.removeAttribute("data-theme");
         }
 
-        toggleButton.textContent = theme === "light" ? "Switch to dark mode" : "Switch to light mode";
+        toggleButton.textContent = theme === "light" ? "Go to dark mode" : "Go to light mode";
       };
 
       const savedTheme = localStorage.getItem(STORAGE_KEY);

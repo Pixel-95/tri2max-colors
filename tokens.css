@@ -1,11 +1,11 @@
 /* design/tokens.css */
 :root {
   --bg-dark: hsl(0 0% 0%);
-  --bg-norm: hsl(0 0% 5%);
+  --bg: hsl(0 0% 5%);
   --bg-light: hsl(0 0% 10%);
 
-  --bg-gradient: linear-gradient(0deg, var(--bg-norm) 95%, var(--bg-light));
-  --bg-gradient-hover: linear-gradient(0deg, var(--bg-norm), var(--bg-light));
+  --bg-gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
+  --bg-gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
 
   --text: hsl(0 0% 95%);
   --text-muted: hsl(0 0% 70%);
@@ -14,27 +14,39 @@
   --border-highlight: hsl(0 0% 60%);
 
   --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
+  --shadow-soft: 0px 2px 2px hsla(0, 0%, 0%, 0.07);
+
+  --primary-dark: hsl(12.15, 72.44%, 34.12%);
+  --primary: hsl(12.15, 72.44%, 44.12%); /* #C2401F */
+
+  --destructive: hsl(0 90% 50%);
+
+  --warning: hsl(45 100% 50%);
+
+  --success: hsl(120 70% 40%);
 
   --radius-card: 1.25rem;
   --radius-button: 0.75rem;
-  --transition-fast: 500ms ease;
 }
 
 :root[data-theme="light"] {
   --bg-dark: hsl(0 0% 90%);
-  --bg-norm: hsl(0 0% 95%);
+  --bg: hsl(0 0% 95%);
   --bg-light: hsl(0 0% 100%);
 
-  --bg-gradient: linear-gradient(0deg, var(--bg-norm) 95%, var(--bg-light));
-  --bg-gradient-hover: linear-gradient(0deg, var(--bg-norm), var(--bg-light));
+  --bg-gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
+  --bg-gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
 
   --text: hsl(0 0% 5%);
   --text-muted: hsl(0 0% 30%);
-  
+
   --border: hsl(0 0% 70%);
   --border-highlight: hsl(0 0% 40%);
 
   --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
+
+  --primary-dark: hsl(12.15, 72.44%, 39.12%);
+
 }
 
 *,
@@ -52,7 +64,6 @@ body {
   background: var(--bg-dark);
   color: var(--text-muted);
   font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .mockup-main {
@@ -60,12 +71,11 @@ body {
 }
 
 .card {
-  background: var(--bg-norm);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow);
   padding: 2rem;
-  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .card-brand {
@@ -97,7 +107,15 @@ body {
 .card h1 {
   margin: 0;
   color: var(--text);
-  font-size: clamp(1.85rem, 4vw, 2.35rem);
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.card h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.5rem;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
@@ -109,25 +127,189 @@ body {
   line-height: 1.5;
 }
 
-button {
-  border: 1px solid var(--border);
+.button-showcase {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.inline-action {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.inline-action .button.inline {
+  margin-left: 0.45rem;
+}
+
+.button {
   border-radius: var(--radius-button);
-  background: var(--bg-light);
+  border: 0px solid var(--border);
   color: var(--text);
   font: inherit;
   font-weight: 700;
   line-height: 1;
   padding: 0.9rem 1.35rem;
+  box-shadow: var(--shadow-soft);
   cursor: pointer;
-  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
 
-button:active {
+.button.primary {
+  background: var(--primary);
+}
+
+.button.secondary {
+  background: var(--bg-light);
+}
+
+.button.destructive {
+  background: var(--bg-light);
+  color: var(--destructive);
+}
+
+.button.inline {
+  background: transparent;
+  color: var(--primary);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  font-weight: 600;
+  line-height: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.button.active,
+.button:active {
+  box-shadow: none;
+}
+
+.button.primary:active {
+  background: var(--primary-dark);
+}
+
+.button.secondary:active {
   background: var(--bg-dark);
-  border-color: var(--border-highlight);
 }
 
-button:focus-visible {
+.button.destructive:active {
+  background: var(--destructive);
+  color: var(--text);
+}
+
+.button.inline:active {
+  color: var(--text);
+}
+
+.form-showcase {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 9.5rem) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.form-row>label,
+.row-label {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.control {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: var(--bg-light);
+  color: var(--text);
+  font: inherit;
+  padding: 0.55rem 0.75rem;
+}
+
+.control-range {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--text);
+}
+
+.control:focus-visible,
+.control-range:focus-visible,
+.switch-input:focus-visible+.switch-track,
+.radio-option input:focus-visible,
+.checkbox-control input:focus-visible {
   outline: 2px solid var(--text);
   outline-offset: 2px;
+}
+
+.switch-control {
+  display: inline-flex;
+  align-items: center;
+}
+
+.switch-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switch-track {
+  position: relative;
+  width: 2.6rem;
+  height: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-light);
+}
+
+.switch-track::after {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 50%;
+  width: 1.08rem;
+  height: 1.08rem;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transform: translateY(-50%);
+}
+
+.switch-input:checked+.switch-track {
+  border-color: var(--border-highlight);
+  background: var(--bg-dark);
+}
+
+.switch-input:checked+.switch-track::after {
+  transform: translate(1.02rem, -50%);
+  background: var(--text);
+}
+
+.radio-group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  gap: 0.9rem;
+}
+
+.radio-option,
+.checkbox-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.radio-option input,
+.checkbox-control input {
+  margin: 0;
+  accent-color: var(--text);
 }
