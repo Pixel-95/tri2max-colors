@@ -3,12 +3,14 @@
   --bg-dark: hsl(0 0% 0%);
   --bg: hsl(0 0% 5%);
   --bg-light: hsl(0 0% 13%);
+  --bg-deactivated: var(--bg-light);
 
   --bg-gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
   --bg-gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
 
   --text: hsl(0 0% 95%);
-  --text-muted: hsl(0 0% 70%);
+  --text-muted: hsl(0 0% 75%);
+  --text-deactivated: hsl(0 0% 40%);
 
   --border: hsl(0 0% 25%);
 
@@ -43,12 +45,14 @@
   --bg-dark: hsl(30 5% 92%);
   --bg: hsl(30 5% 96%);
   --bg-light: hsl(0 0% 100%);
+  --bg-deactivated: var(--bg-dark);
 
   --bg-gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
   --bg-gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
 
   --text: hsl(0 0% 5%);
-  --text-muted: hsl(0 0% 30%);
+  --text-muted: hsl(0 0% 25%);
+  --text-deactivated: hsl(0 0% 60%);
 
   --border: hsl(0 0% 85%);
 
@@ -210,6 +214,20 @@ body {
   color: var(--text);
 }
 
+.button.disabled,
+.button:disabled {
+  background: var(--bg-deactivated);
+  color: var(--text-deactivated);
+  box-shadow: none;
+}
+
+.button.disabled:active,
+.button:disabled:active {
+  background: var(--bg-deactivated);
+  color: var(--text-deactivated);
+  box-shadow: none;
+}
+
 .form-showcase {
   margin-top: 1.25rem;
   display: grid;
@@ -221,6 +239,16 @@ body {
   display: grid;
   gap: 0.75rem;
   justify-items: start;
+}
+
+.danger-zone summary {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  cursor: pointer;
 }
 
 .notifications {
@@ -287,18 +315,43 @@ body {
 }
 
 .control-range {
+  --range-percent: 50%;
   width: 100%;
   margin: 0;
-  accent-color: var(--text);
+  height: 1.5rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
 }
 
-.control:focus-visible,
-.control-range:focus-visible,
-.switch-input:focus-visible+.switch-track,
-.radio-option input:focus-visible,
-.checkbox-control input:focus-visible {
-  outline: 2px solid var(--text);
-  outline-offset: 2px;
+.control-range::-webkit-slider-runnable-track {
+  height: 0.4rem;
+  border-radius: 999px;
+  background: linear-gradient(to right,
+      var(--text) 0%,
+      var(--text) var(--range-percent),
+      var(--bg-light) var(--range-percent),
+      var(--bg-light) 100%);
+}
+
+.control-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.3rem;
+  border: 1px solid var(--text);
+  border-radius: 50%;
+  background: var(--text);
+}
+
+.control-range:hover::-webkit-slider-runnable-track,
+.control-range:active::-webkit-slider-runnable-track {
+  background: linear-gradient(to right,
+      var(--text) 0%,
+      var(--text) var(--range-percent),
+      var(--bg-light) var(--range-percent),
+      var(--bg-light) 100%);
 }
 
 .switch-control {
@@ -316,7 +369,7 @@ body {
   position: relative;
   width: 2.6rem;
   height: 1.5rem;
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--text-deactivated);
   border-radius: 999px;
   background: var(--bg-light);
 }
@@ -329,13 +382,13 @@ body {
   width: 1.08rem;
   height: 1.08rem;
   border-radius: 50%;
-  background: var(--text-muted);
+  background: var(--text-deactivated);
   transform: translateY(-50%);
 }
 
 .switch-input:checked+.switch-track {
   border-color: var(--text);
-  background: var(--bg-dark);
+  background: var(--bg-light);
 }
 
 .switch-input:checked+.switch-track::after {

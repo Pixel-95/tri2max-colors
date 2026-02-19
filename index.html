@@ -19,7 +19,7 @@
       <p>A muted shade for the rest of the text.</p>
       <p class="inline-action">
         Inline action:
-        <button class="button inline" type="button">Learn more</button>
+        <button class="button inline" type="button">Learn more</button>,
         but dont learn too much.
       </p>
       <div class="button-showcase" aria-label="Button variants">
@@ -27,6 +27,8 @@
           mode</button>
         <button id="notifications-toggle" class="button secondary" type="button" aria-controls="notifications-card"
           aria-expanded="false">Show Notifications</button>
+        <button id="notifications-toggle" class="button secondary disabled" type="button" aria-controls="notifications-card"
+          aria-expanded="false" disabled>Cannot be pressed</button>
       </div>
 
       <section class="form-showcase" aria-label="Form elements">
@@ -80,10 +82,10 @@
         </div>
       </section>
 
-      <section class="danger-zone" aria-label="Danger actions">
-        <h2>Danger Zone</h2>
+      <details class="danger-zone">
+        <summary>Danger Zone</summary>
         <button class="button destructive" type="button">Delete universe</button>
-      </section>
+      </details>
     </article>
 
     <article id="notifications-card" class="card notifications-card" hidden>
@@ -101,6 +103,7 @@
       const toggleButton = document.getElementById("theme-toggle");
       const notificationsToggleButton = document.getElementById("notifications-toggle");
       const notificationsCard = document.getElementById("notifications-card");
+      const rangeControls = document.querySelectorAll(".control-range");
       const STORAGE_KEY = "mockup-theme";
       const NOTIFICATIONS_STORAGE_KEY = "mockup-notifications-visibility";
 
@@ -140,6 +143,20 @@
         const nextNotificationsVisible = notificationsCard.hidden;
         setNotificationsVisibility(nextNotificationsVisible);
         localStorage.setItem(NOTIFICATIONS_STORAGE_KEY, nextNotificationsVisible ? "visible" : "hidden");
+      });
+
+      const setRangePercent = (range) => {
+        const min = Number(range.min || 0);
+        const max = Number(range.max || 100);
+        const value = Number(range.value || min);
+        const span = max - min;
+        const percent = span === 0 ? 0 : ((value - min) / span) * 100;
+        range.style.setProperty("--range-percent", `${percent}%`);
+      };
+
+      rangeControls.forEach((range) => {
+        setRangePercent(range);
+        range.addEventListener("input", () => setRangePercent(range));
       });
     })();
   </script>
