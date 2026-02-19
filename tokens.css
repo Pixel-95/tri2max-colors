@@ -2,7 +2,7 @@
 :root {
   --bg-dark: hsl(0 0% 0%);
   --bg: hsl(0 0% 5%);
-  --bg-light: hsl(0 0% 10%);
+  --bg-light: hsl(0 0% 13%);
 
   --bg-gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
   --bg-gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
@@ -10,28 +10,38 @@
   --text: hsl(0 0% 95%);
   --text-muted: hsl(0 0% 70%);
 
-  --border: hsl(0 0% 30%);
-  --border-highlight: hsl(0 0% 60%);
+  --border: hsl(0 0% 25%);
 
   --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
   --shadow-soft: 0px 2px 2px hsla(0, 0%, 0%, 0.07);
 
+  /* #2265C3 */
+  --primary: hsl(215 70% 50%);
+  --primary-dark: hsl(215 70% 42%);
+
+  /* #C2401F */
   --primary-dark: hsl(12.15, 72.44%, 34.12%);
-  --primary: hsl(12.15, 72.44%, 44.12%); /* #C2401F */
+  --primary: hsl(12.15, 72.44%, 44.12%);
 
-  --destructive: hsl(0 90% 50%);
+  --destructive: hsl(0 85% 45%);
+  --destructive-dark: hsl(0 65% 35%);
+  --destructive-light: hsl(0 65% 92%);
 
-  --warning: hsl(45 100% 50%);
+  --warning-dark: hsl(30 80% 40%);
+  --warning: hsl(45 80% 45%);
+  --warning-light: hsl(45 80% 92%);
 
-  --success: hsl(120 70% 40%);
+  --success-dark: hsl(120 50% 25%);
+  --success: hsl(120 50% 40%);
+  --success-light: hsl(120 50% 90%);
 
   --radius-card: 1.25rem;
   --radius-button: 0.75rem;
 }
 
 :root[data-theme="light"] {
-  --bg-dark: hsl(0 0% 90%);
-  --bg: hsl(0 0% 95%);
+  --bg-dark: hsl(30 5% 92%);
+  --bg: hsl(30 5% 96%);
   --bg-light: hsl(0 0% 100%);
 
   --bg-gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
@@ -40,8 +50,7 @@
   --text: hsl(0 0% 5%);
   --text-muted: hsl(0 0% 30%);
 
-  --border: hsl(0 0% 70%);
-  --border-highlight: hsl(0 0% 40%);
+  --border: hsl(0 0% 85%);
 
   --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
 
@@ -68,6 +77,8 @@ body {
 
 .mockup-main {
   width: min(100%, 28rem);
+  display: grid;
+  gap: 1rem;
 }
 
 .card {
@@ -139,10 +150,6 @@ body {
   font-size: 0.95rem;
 }
 
-.inline-action .button.inline {
-  margin-left: 0.45rem;
-}
-
 .button {
   border-radius: var(--radius-button);
   border: 0px solid var(--border);
@@ -207,6 +214,51 @@ body {
   margin-top: 1.25rem;
   display: grid;
   gap: 0.75rem;
+}
+
+.danger-zone {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.notifications {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.notifications-card .notifications {
+  margin-top: 0;
+}
+
+.notification {
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-button);
+  font-size: 0.9rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.notification.success {
+  color: var(--success-dark);
+  background: var(--success-light);
+  border-color: var(--success-dark);
+}
+
+.notification.warning {
+  color: var(--warning-dark);
+  background: var(--warning-light);
+  border-color: var(--warning-dark);
+}
+
+.notification.destructive {
+  color: var(--destructive-dark);
+  background: var(--destructive-light);
+  border-color: var(--destructive-dark);
 }
 
 .form-row {
@@ -282,7 +334,7 @@ body {
 }
 
 .switch-input:checked+.switch-track {
-  border-color: var(--border-highlight);
+  border-color: var(--text);
   background: var(--bg-dark);
 }
 
