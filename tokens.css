@@ -1,0 +1,110 @@
+/* design/tokens.css */
+:root {
+  --bg-dark: hsl(0 0% 0%);
+  --bg-norm: hsl(0 0% 5%);
+  --bg-light: hsl(0 0% 10%);
+
+  --bg-gradient: linear-gradient(0deg, var(--bg-norm) 95%, var(--bg-light));
+  --bg-gradient-hover: linear-gradient(0deg, var(--bg-norm), var(--bg-light));
+
+  --text: hsl(0 0% 95%);
+  --text-muted: hsl(0 0% 70%);
+
+  --border: hsl(0 0% 30%);
+  --border-highlight: hsl(0 0% 60%);
+
+  --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
+
+  --radius-card: 1.25rem;
+  --radius-button: 0.75rem;
+  --transition-fast: 160ms ease;
+}
+
+:root[data-theme="light"] {
+  --bg-dark: hsl(0 0% 90%);
+  --bg-norm: hsl(0 0% 95%);
+  --bg-light: hsl(0 0% 100%);
+
+  --bg-gradient: linear-gradient(0deg, var(--bg-norm) 95%, var(--bg-light));
+  --bg-gradient-hover: linear-gradient(0deg, var(--bg-norm), var(--bg-light));
+
+  --text: hsl(0 0% 5%);
+  --text-muted: hsl(0 0% 30%);
+  
+  --border: hsl(0 0% 30%);
+  --border-highlight: hsl(0 0% 100%);
+
+  --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: var(--bg-dark);
+  color: var(--text-muted);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.mockup-main {
+  width: min(100%, 28rem);
+}
+
+.card {
+  background: var(--bg-norm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.card p {
+  margin: 0.9rem 0 1.8rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+button {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: var(--bg-gradient);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.9rem 1.35rem;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+button:hover {
+  background: var(--bg-gradient-hover);
+  border-color: var(--border-highlight);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}

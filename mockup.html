@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Theme Toggle Mockup</title>
+  <link rel="stylesheet" href="./tokens.css" />
+</head>
+<body>
+  <main class="mockup-main">
+    <article class="card">
+      <h1>Sharp heading</h1>
+      <p>A muted shade for the rest of the text.</p>
+      <button id="theme-toggle" type="button" aria-label="Toggle theme">Switch to light mode</button>
+    </article>
+  </main>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggleButton = document.getElementById("theme-toggle");
+      const STORAGE_KEY = "mockup-theme";
+
+      const setTheme = (theme) => {
+        if (theme === "light") {
+          root.setAttribute("data-theme", "light");
+        } else {
+          root.removeAttribute("data-theme");
+        }
+
+        toggleButton.textContent = theme === "light" ? "Switch to dark mode" : "Switch to light mode";
+      };
+
+      const savedTheme = localStorage.getItem(STORAGE_KEY);
+      setTheme(savedTheme === "light" ? "light" : "dark");
+
+      toggleButton.addEventListener("click", () => {
+        const isLightMode = root.getAttribute("data-theme") === "light";
+        const nextTheme = isLightMode ? "dark" : "light";
+        localStorage.setItem(STORAGE_KEY, nextTheme);
+        setTheme(nextTheme);
+      });
+    })();
+  </script>
+</body>
+</html>
