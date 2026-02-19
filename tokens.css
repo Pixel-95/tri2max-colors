@@ -21,8 +21,8 @@
   --primary-dark: hsl(12.15, 72.44%, 34.12%);
   --primary: hsl(12.15, 72.44%, 44.12%);
 
-  --secondary-dark: hsl(2 68% 36%);
-  --secondary: hsl(2 68% 46%);
+  --secondary-dark: hsl(355 68% 36%);
+  --secondary: hsl(355 68% 46%);
 
   /* gradient from primary to secondary */
   --gradient-dark: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
