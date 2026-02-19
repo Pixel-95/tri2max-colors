@@ -21,9 +21,24 @@
   --primary-dark: hsl(12.15, 72.44%, 34.12%);
   --primary: hsl(12.15, 72.44%, 44.12%);
 
+  --secondary-dark: hsl(2 68% 36%);
+  --secondary: hsl(2 68% 46%);
+
+  /* gradient from primary to secondary */
+  --gradient-dark: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
+  --gradient: linear-gradient(90deg, var(--primary), var(--secondary));
+  --primary-fill: var(--primary);
+  --primary-fill-active: var(--primary-dark);
+
   /* #2265C3 */
   --primary2-dark: hsl(215 78% 30%);
   --primary2: hsl(215, 78%, 45%);
+
+  --secondary2: hsl(200 75% 48%);
+  --secondary2-dark: hsl(200 75% 33%);
+
+  --gradient2-dark: linear-gradient(90deg, var(--secondary2-dark), var(--primary2-dark));
+  --gradient2: linear-gradient(90deg, var(--secondary2), var(--primary2));
 
   --destructive: hsl(0 85% 45%);
   --destructive-dark: hsl(0 65% 35%);
@@ -60,12 +75,23 @@
 
   --primary-dark: hsl(12.15, 72.44%, 39.12%);
   --primary2-dark: hsl(215 70% 42%);
+  --gradient-dark: linear-gradient(90deg, var(--secondary-dark), var(--primary-dark));
+  --gradient: linear-gradient(90deg, var(--secondary), var(--primary));
 
 }
 
 :root[data-primary="primary2"] {
   --primary: var(--primary2);
   --primary-dark: var(--primary2-dark);
+  --secondary: var(--secondary2);
+  --secondary-dark: var(--secondary2-dark);
+  --gradient: var(--gradient2);
+  --gradient-dark: var(--gradient2-dark);
+}
+
+:root[data-gradient="enabled"] {
+  --primary-fill: var(--gradient);
+  --primary-fill-active: var(--gradient-dark);
 }
 
 *,
@@ -173,7 +199,7 @@ body {
 }
 
 .button.primary {
-  background: var(--primary);
+  background: var(--primary-fill);
 }
 
 .button.secondary {
@@ -194,8 +220,6 @@ body {
   padding: 0;
   font-weight: 600;
   line-height: inherit;
-  text-decoration: underline;
-  text-underline-offset: 0.14em;
 }
 
 .button.active,
@@ -204,7 +228,7 @@ body {
 }
 
 .button.primary:active {
-  background: var(--primary-dark);
+  background: var(--primary-fill-active);
 }
 
 .button.secondary:active {
@@ -250,6 +274,7 @@ body {
 
 .danger-zone {
   margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
   display: grid;
   gap: 0.75rem;
   justify-items: start;
@@ -310,7 +335,7 @@ body {
   gap: 0.9rem;
 }
 
-.form-row > :nth-child(2) {
+.form-row> :nth-child(2) {
   justify-self: end;
 }
 
@@ -345,6 +370,15 @@ body {
 
 .text-primary {
   color: var(--primary);
+}
+
+:root[data-gradient="enabled"] .button.inline,
+:root[data-gradient="enabled"] .text-primary {
+  color: transparent;
+  background-image: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .control-range {

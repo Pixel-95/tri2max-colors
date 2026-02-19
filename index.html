@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Theme Toggle Mockup</title>
+  <link rel="icon" type="image/png" href="./assets/tri2max_logo_darkMode.png" />
   <link rel="stylesheet" href="./tokens.css" />
 </head>
 
@@ -27,35 +28,39 @@
           mode</button>
         <button id="primary-toggle" class="button secondary" type="button" aria-controls="notifications-card"
           aria-expanded="false">Change Primary Color</button>
-        <button id="notifications-toggle" class="button secondary" type="button" aria-controls="notifications-card"
-          aria-expanded="false">Show Notifications</button>
-        <button id="notifications-toggle" class="button secondary disabled" type="button" aria-controls="notifications-card"
-          aria-expanded="false" disabled>Cannot be pressed</button>
       </div>
 
-        <section class="output-showcase" aria-label="Output fields">
-          <div class="form-row">
-            <span class="row-label">Heart rate</span>
-            <output class="output-value">
-              <span class="text-primary">156&hairsp;bpm</span>
-            </output>
-          </div>
-          <div class="form-row">
-            <span class="row-label">Power</span>
-            <output class="output-value">
-              <span class="text-primary">351&hairsp;W</span>
-            </output>
-          </div>
-          <div class="form-row">
-            <span class="row-label">Pace</span>
-            <output class="output-value">
-              <span class="text-primary">4:05/km</span>
-            </output>
-          </div>
-        </section>
+      <section class="output-showcase" aria-label="Output fields">
+        <div class="form-row">
+          <span class="row-label">Heart rate</span>
+          <output class="output-value">
+            <span class="text-primary">156&hairsp;bpm</span>
+          </output>
+        </div>
+        <div class="form-row">
+          <span class="row-label">Power</span>
+          <output class="output-value">
+            <span class="text-primary">351&hairsp;W</span>
+          </output>
+        </div>
+        <div class="form-row">
+          <span class="row-label">Pace</span>
+          <output class="output-value">
+            <span class="text-primary">4:05/km</span>
+          </output>
+        </div>
       </section>
 
       <section class="form-showcase" aria-label="Form elements">
+
+        <div class="form-row">
+          <label for="field-switch">Use Gradient</label>
+          <label class="switch-control" for="field-switch">
+            <input id="field-switch" class="switch-input" type="checkbox" checked />
+            <span class="switch-track" aria-hidden="true"></span>
+          </label>
+        </div>
+
         <div class="form-row">
           <label for="field-text">Text Input</label>
           <input id="field-text" class="control" type="text" value="My input text" />
@@ -73,14 +78,6 @@
             <option>Option B</option>
             <option>Option C</option>
           </select>
-        </div>
-
-        <div class="form-row">
-          <label for="field-switch">Switch</label>
-          <label class="switch-control" for="field-switch">
-            <input id="field-switch" class="switch-input" type="checkbox" checked />
-            <span class="switch-track" aria-hidden="true"></span>
-          </label>
         </div>
 
         <div class="form-row">
@@ -105,10 +102,19 @@
           </label>
         </div>
 
-      <details class="danger-zone">
-        <summary>Danger Zone</summary>
-        <button class="button destructive" type="button">Delete universe</button>
-      </details>
+        <details class="danger-zone">
+          <summary>Danger Zone</summary>
+          <button class="button destructive" type="button">Delete universe</button>
+        </details>
+      </section>
+
+      <div class="button-showcase" aria-label="Button variants">
+        <button id="notifications-toggle" class="button secondary" type="button" aria-controls="notifications-card"
+          aria-expanded="false">Show Notifications</button>
+        <button id="notifications-toggle" class="button secondary disabled" type="button"
+          aria-controls="notifications-card" aria-expanded="false" disabled>Cannot be pressed</button>
+      </div>
+
     </article>
 
     <article id="notifications-card" class="card notifications-card" hidden>
@@ -128,9 +134,11 @@
       const notificationsToggleButton = document.getElementById("notifications-toggle");
       const notificationsCard = document.getElementById("notifications-card");
       const rangeControls = document.querySelectorAll(".control-range");
+      const gradientSwitch = document.getElementById("field-switch");
       const STORAGE_KEY = "mockup-theme";
       const PRIMARY_STORAGE_KEY = "mockup-primary-color";
       const NOTIFICATIONS_STORAGE_KEY = "mockup-notifications-visibility";
+      const GRADIENT_STORAGE_KEY = "mockup-gradient-enabled";
 
       const setTheme = (theme) => {
         if (theme === "light") {
@@ -180,6 +188,30 @@
         } else {
           localStorage.removeItem(PRIMARY_STORAGE_KEY);
         }
+      });
+
+      const setGradientMode = (isEnabled) => {
+        if (isEnabled) {
+          root.setAttribute("data-gradient", "enabled");
+        } else {
+          root.removeAttribute("data-gradient");
+        }
+
+        if (gradientSwitch) {
+          gradientSwitch.checked = isEnabled;
+        }
+      };
+
+      const savedGradientMode = localStorage.getItem(GRADIENT_STORAGE_KEY);
+      const initialGradientMode = savedGradientMode === null
+        ? gradientSwitch?.checked ?? false
+        : savedGradientMode === "enabled";
+      setGradientMode(initialGradientMode);
+
+      gradientSwitch?.addEventListener("change", (event) => {
+        const isEnabled = event.target.checked;
+        setGradientMode(isEnabled);
+        localStorage.setItem(GRADIENT_STORAGE_KEY, isEnabled ? "enabled" : "disabled");
       });
 
       const setNotificationsVisibility = (isVisible) => {
