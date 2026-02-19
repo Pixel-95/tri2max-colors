@@ -17,13 +17,13 @@
   --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
   --shadow-soft: 0px 2px 2px hsla(0, 0%, 0%, 0.07);
 
-  /* #2265C3 */
-  --primary: hsl(215 70% 50%);
-  --primary-dark: hsl(215 70% 42%);
-
   /* #C2401F */
   --primary-dark: hsl(12.15, 72.44%, 34.12%);
   --primary: hsl(12.15, 72.44%, 44.12%);
+
+  /* #2265C3 */
+  --primary2-dark: hsl(215 78% 30%);
+  --primary2: hsl(215, 78%, 45%);
 
   --destructive: hsl(0 85% 45%);
   --destructive-dark: hsl(0 65% 35%);
@@ -59,7 +59,13 @@
   --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
 
   --primary-dark: hsl(12.15, 72.44%, 39.12%);
+  --primary2-dark: hsl(215 70% 42%);
 
+}
+
+:root[data-primary="primary2"] {
+  --primary: var(--primary2);
+  --primary-dark: var(--primary2-dark);
 }
 
 *,
@@ -219,6 +225,8 @@ body {
   background: var(--bg-deactivated);
   color: var(--text-deactivated);
   box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .button.disabled:active,
@@ -232,6 +240,12 @@ body {
   margin-top: 1.25rem;
   display: grid;
   gap: 0.75rem;
+}
+
+.output-showcase {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.35rem;
 }
 
 .danger-zone {
@@ -296,6 +310,10 @@ body {
   gap: 0.9rem;
 }
 
+.form-row > :nth-child(2) {
+  justify-self: end;
+}
+
 .form-row>label,
 .row-label {
   margin: 0;
@@ -312,6 +330,21 @@ body {
   color: var(--text);
   font: inherit;
   padding: 0.55rem 0.75rem;
+}
+
+.output-value {
+  width: 100%;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 0.08rem;
+  color: var(--text);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.text-primary {
+  color: var(--primary);
 }
 
 .control-range {
