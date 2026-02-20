@@ -16,41 +16,43 @@
       <span>TRI2MAX</span>
     </header>
 
-    <h1 id="main-heading">Main Heading</h1>
-    <p>This is a normal text. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-    <p>You can open a modal here:
-      <button class="button button-inline" type="button">Learn more</button>,
+    <h1 id="main-heading" class="heading-1">Main Heading</h1>
+    <p class="text">This is a normal text. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    <h2 class="heading-2">Control Panel</h2>
+    <p class="text">You can open a modal here:
+      <button class="button button-inline text-button" type="button">Learn more</button>,
       but be careful.
     </p>
 
     <div style="display: grid; gap: 0.75rem;">
-      <button id="theme-toggle" class="button button-primary" type="button" aria-label="Toggle theme">Go to light mode</button>
-      <button id="primary-toggle" class="button button-secondary" type="button" aria-pressed="false">Change Primary Color</button>
+      <button id="theme-toggle" class="button button-primary text-button" type="button" aria-label="Toggle theme">Go to light mode</button>
+      <button id="primary-toggle" class="button button-secondary text-button" type="button" aria-pressed="false">Change Primary Color</button>
     </div>
 
     <section class="card" aria-label="Output card">
+      <button id="restore-values" class="button button-primary button-primary-small text-button" type="button">Restore</button>
       <div>
-        <span>Heart rate</span>
+        <span class="heading-3">Heart rate</span>
         <output><strong id="output-heart-rate">156&hairsp;bpm</strong></output>
       </div>
       <div>
-        <span>Power</span>
+        <span class="heading-3">Power</span>
         <output><strong id="output-power">351&hairsp;W</strong></output>
       </div>
       <div>
-        <span>Pace</span>
+        <span class="heading-3">Pace</span>
         <output><strong id="output-pace">4:05/km</strong></output>
       </div>
       <div>
-        <label for="field-text">Heading</label>
+        <label class="heading-3" for="field-text">Heading</label>
         <input id="field-text" class="input" type="text" value="Main Heading" />
       </div>
-      <button id="card-button" class="button button-secondary" type="button">Randomize Values</button>
+      <button id="card-button" class="button button-secondary text-button" type="button">Randomize Values</button>
     </section>
 
     <form aria-label="Form elements">
       <div>
-        <span>Use Gradient</span>
+        <span class="heading-3">Use Gradient</span>
         <label class="switch" for="field-switch">
           <input id="field-switch" type="checkbox" checked />
           <span aria-hidden="true"></span>
@@ -58,12 +60,12 @@
       </div>
 
       <div>
-        <label for="field-slider">Pace</label>
+        <label class="heading-3" for="field-slider">Pace</label>
         <input id="field-slider" class="input input-range" type="range" min="0" max="100" value="23" />
       </div>
 
       <div>
-        <label for="field-select">Unit System</label>
+        <label class="heading-3" for="field-select">Unit System</label>
         <select id="field-select" class="input">
           <option value="metric">Metric</option>
           <option value="imperial">Imperial</option>
@@ -71,17 +73,17 @@
       </div>
 
       <div>
-        <span>Notification</span>
+        <span class="heading-3">Notification</span>
         <fieldset>
-          <label>
+          <label class="text">
             <input type="radio" name="field-radio" value="success" checked />
             Success
           </label>
-          <label>
+          <label class="text">
             <input type="radio" name="field-radio" value="warning" />
             Warning
           </label>
-          <label>
+          <label class="text">
             <input type="radio" name="field-radio" value="destructive" />
             Destructive
           </label>
@@ -89,8 +91,8 @@
       </div>
 
       <div>
-        <span>Danger Zone</span>
-        <label for="field-checkbox">
+        <span class="heading-3">Danger Zone</span>
+        <label class="text" for="field-checkbox">
           <input id="field-checkbox" type="checkbox" />
           Show
         </label>
@@ -99,16 +101,20 @@
 
     <section id="danger-zone-area" style="display: grid; gap: 0.75rem;">
       <div class="separator" aria-hidden="true"></div>
-      <h2>Danger Zone</h2>
-      <button id="delete-universe" class="button button-destructive" type="button">Reset Values</button>
-      <button class="button button-secondary" type="button" disabled>Deactivated</button>
+      <h2 class="heading-2">Danger Zone</h2>
+      <button id="delete-universe" class="button button-destructive text-button" type="button">Reset Values</button>
+      <button class="button button-secondary text-button" type="button" disabled>Deactivated</button>
       <div class="separator" aria-hidden="true"></div>
       <section aria-label="Notifications">
-        <p id="notification-success" class="notification" data-tone="success">Success: Changes were saved successfully.</p>
-        <p id="notification-warning" class="notification" data-tone="warning">Warning: Your session will expire in 2 minutes.</p>
-        <p id="notification-destructive" class="notification" data-tone="destructive">Destructive: This action cannot be undone.</p>
+        <p id="notification-success" class="notification text" data-tone="success">Success: Changes were saved successfully.</p>
+        <p id="notification-warning" class="notification text" data-tone="warning">Warning: Your session will expire in 2 minutes.</p>
+        <p id="notification-destructive" class="notification text" data-tone="destructive">Destructive: This action cannot be undone.</p>
       </section>
     </section>
+
+    <footer>
+      <p class="text-small">© TRI2MAX. All rights reserved.</p>
+    </footer>
     <div aria-hidden="true" style="height: 20vh;"></div>
   </main>
 
@@ -124,6 +130,7 @@
       const heartRateOutput = document.getElementById("output-heart-rate");
       const powerOutput = document.getElementById("output-power");
       const paceOutput = document.getElementById("output-pace");
+      const restoreValuesButton = document.getElementById("restore-values");
       const cardButton = document.getElementById("card-button");
       const paceSlider = document.getElementById("field-slider");
       const unitSelect = document.getElementById("field-select");
@@ -283,6 +290,15 @@
         });
       };
 
+      const restorePerformanceValues = () => {
+        setHeartRate(DEFAULT_HEART_RATE);
+        setPower(DEFAULT_POWER);
+        paceSlider.value = String(DEFAULT_SLIDER);
+        unitSelect.value = DEFAULT_UNIT;
+        setRangePercent(paceSlider);
+        setPace();
+      };
+
       const resetUniverse = () => {
         localStorage.removeItem(STORAGE_KEY);
         localStorage.removeItem(PRIMARY_STORAGE_KEY);
@@ -296,13 +312,7 @@
         headingInput.value = DEFAULT_HEADING;
         mainHeading.textContent = DEFAULT_HEADING;
 
-        setHeartRate(DEFAULT_HEART_RATE);
-        setPower(DEFAULT_POWER);
-
-        paceSlider.value = String(DEFAULT_SLIDER);
-        setRangePercent(paceSlider);
-        unitSelect.value = DEFAULT_UNIT;
-        setPace();
+        restorePerformanceValues();
 
         setNotificationTone(DEFAULT_NOTIFICATION_TONE);
         setDangerZoneVisibility(DEFAULT_DANGER_ZONE_VISIBLE);
@@ -316,6 +326,10 @@
       cardButton.addEventListener("click", () => {
         setHeartRate(randomInt(100, 180));
         setPower(randomInt(150, 400));
+      });
+
+      restoreValuesButton.addEventListener("click", () => {
+        restorePerformanceValues();
       });
 
       paceSlider.addEventListener("input", () => {
@@ -340,10 +354,7 @@
       });
 
       mainHeading.textContent = headingInput.value.trim() || DEFAULT_HEADING;
-      setHeartRate(DEFAULT_HEART_RATE);
-      setPower(DEFAULT_POWER);
-      setRangePercent(paceSlider);
-      setPace();
+      restorePerformanceValues();
       setNotificationTone(DEFAULT_NOTIFICATION_TONE);
     })();
   </script>
