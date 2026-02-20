@@ -29,7 +29,7 @@
         aria-expanded="false">Change Primary Color</button>
     </div>
 
-    <section class="output-showcase" aria-label="Output fields">
+    <section class="card" aria-label="Output card">
       <div class="form-row">
         <span class="row-label">Heart rate</span>
         <output class="output-value">
@@ -48,6 +48,13 @@
           <span class="text-primary">4:05/km</span>
         </output>
       </div>
+
+      <div class="form-row">
+        <label for="field-text">Text Input</label>
+        <input id="field-text" class="control" type="text" value="My input text" />
+      </div>
+
+      <button class="button secondary" type="button">Card Button</button>
     </section>
 
     <section class="form-showcase" aria-label="Form elements">
@@ -58,11 +65,6 @@
           <input id="field-switch" class="switch-input" type="checkbox" checked />
           <span class="switch-track" aria-hidden="true"></span>
         </label>
-      </div>
-
-      <div class="form-row">
-        <label for="field-text">Text Input</label>
-        <input id="field-text" class="control" type="text" value="My input text" />
       </div>
 
       <div class="form-row">
@@ -107,7 +109,7 @@
       </details>
     </section>
 
-    <div class="button-showcase" aria-label="Button variants">
+    <div class="button-showcase button-showcase-lower" aria-label="Button variants">
       <button id="notifications-toggle" class="button secondary" type="button" aria-controls="notifications-card"
         aria-expanded="false">Show Notifications</button>
       <button id="notifications-toggle" class="button secondary disabled" type="button"

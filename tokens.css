@@ -2,11 +2,9 @@
 :root {
   --bg-dark: hsl(0 0% 0%);
   --bg: hsl(0 0% 5%);
-  --bg-light: hsl(0 0% 13%);
-  --bg-deactivated: var(--bg-light);
-
-  --bg-gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
-  --bg-gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
+  --bg-light: hsl(0 0% 8%);
+  --bg-element: hsl(0 0% 13%);
+  --bg-deactivated: var(--bg-element);
 
   --text: hsl(0 0% 95%);
   --text-muted: hsl(0 0% 75%);
@@ -57,13 +55,11 @@
 }
 
 :root[data-theme="light"] {
-  --bg-dark: hsl(30 5% 92%);
-  --bg: hsl(30 5% 96%);
-  --bg-light: hsl(0 0% 100%);
+  --bg-dark: hsl(30 5% 90%);
+  --bg: hsl(30 5% 93%);
+  --bg-light: hsl(30 5% 96%);
+  --bg-element: hsl(0 0% 100%);
   --bg-deactivated: var(--bg-dark);
-
-  --bg-gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
-  --bg-gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
 
   --text: hsl(0 0% 5%);
   --text-muted: hsl(0 0% 25%);
@@ -109,6 +105,8 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
   padding: 1rem;
   background: var(--bg);
   color: var(--text-muted);
@@ -119,6 +117,7 @@ body {
   width: 100%;
   max-width: 1000px;
   display: grid;
+  align-content: start;
   gap: 1rem;
   padding: 0.75rem;
 }
@@ -178,6 +177,15 @@ body {
   justify-items: start;
 }
 
+.button-showcase-lower {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+.button-showcase-lower .button {
+  white-space: nowrap;
+}
+
 .inline-action {
   margin: 0;
   color: var(--text-muted);
@@ -185,6 +193,8 @@ body {
 }
 
 .button {
+  width: 100%;
+  min-height: 3rem;
   border-radius: var(--radius-button);
   border: 0px solid var(--border);
   color: var(--text);
@@ -201,15 +211,17 @@ body {
 }
 
 .button.secondary {
-  background: var(--bg-light);
+  background: var(--bg-element);
 }
 
 .button.destructive {
-  background: var(--bg-light);
+  background: var(--bg-element);
   color: var(--destructive);
 }
 
 .button.inline {
+  width: auto;
+  min-height: 0;
   background: transparent;
   color: var(--primary);
   border: 0;
@@ -264,10 +276,15 @@ body {
   gap: 0.75rem;
 }
 
-.output-showcase {
+.card {
   display: grid;
   gap: 0.75rem;
   margin-top: 0.35rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--bg-light);
+  box-shadow: var(--shadow);
 }
 
 .danger-zone {
@@ -349,10 +366,24 @@ body {
   width: 100%;
   border: 1px solid var(--border);
   border-radius: var(--radius-button);
-  background: var(--bg-light);
+  background: var(--bg-element);
   color: var(--text);
   font: inherit;
   padding: 0.55rem 0.75rem;
+}
+
+select.control {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 2.25rem;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text-muted) 50%),
+    linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.05rem) calc(50% + 0.08rem),
+    calc(100% - 0.72rem) calc(50% + 0.08rem);
+  background-size: 0.34rem 0.34rem;
+  background-repeat: no-repeat;
 }
 
 .output-value {
@@ -395,8 +426,8 @@ body {
   background: linear-gradient(to right,
       var(--text) 0%,
       var(--text) var(--range-percent),
-      var(--bg-light) var(--range-percent),
-      var(--bg-light) 100%);
+      var(--bg-element) var(--range-percent),
+      var(--bg-element) 100%);
 }
 
 .control-range::-webkit-slider-thumb {
@@ -415,8 +446,8 @@ body {
   background: linear-gradient(to right,
       var(--text) 0%,
       var(--text) var(--range-percent),
-      var(--bg-light) var(--range-percent),
-      var(--bg-light) 100%);
+      var(--bg-element) var(--range-percent),
+      var(--bg-element) 100%);
 }
 
 .switch-control {
@@ -436,7 +467,7 @@ body {
   height: 1.5rem;
   border: 1.5px solid var(--text-deactivated);
   border-radius: 999px;
-  background: var(--bg-light);
+  background: var(--bg-element);
 }
 
 .switch-track::after {
@@ -453,7 +484,7 @@ body {
 
 .switch-input:checked+.switch-track {
   border-color: var(--text);
-  background: var(--bg-light);
+  background: var(--bg-element);
 }
 
 .switch-input:checked+.switch-track::after {
