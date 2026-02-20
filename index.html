@@ -18,10 +18,9 @@
 
     <h1 id="main-heading">Main Heading</h1>
     <p>A muted shade for the rest of the text.</p>
-    <p>
-      Inline action:
+    <p>You can open a modal here:
       <button class="button button-inline" type="button">Learn more</button>,
-      but dont learn too much.
+      but be careful.
     </p>
 
     <div style="display: grid; gap: 0.75rem;">
@@ -43,7 +42,7 @@
         <output><strong id="output-pace">4:05/km</strong></output>
       </div>
       <div>
-        <label for="field-text">Text Input</label>
+        <label for="field-text">Heading</label>
         <input id="field-text" class="input" type="text" value="Main Heading" />
       </div>
       <button id="card-button" class="button button-secondary" type="button">Randomize Values</button>
@@ -59,12 +58,12 @@
       </div>
 
       <div>
-        <label for="field-slider">Slider</label>
+        <label for="field-slider">Pace</label>
         <input id="field-slider" class="input input-range" type="range" min="0" max="100" value="23" />
       </div>
 
       <div>
-        <label for="field-select">Dropdown / Select</label>
+        <label for="field-select">Unit System</label>
         <select id="field-select" class="input">
           <option value="metric">Metric</option>
           <option value="imperial">Imperial</option>
@@ -72,7 +71,7 @@
       </div>
 
       <div>
-        <span>Radio Group</span>
+        <span>Notification</span>
         <fieldset>
           <label>
             <input type="radio" name="field-radio" value="success" checked />
@@ -101,7 +100,7 @@
     <section id="danger-zone-area" style="display: grid; gap: 0.75rem;">
       <div class="separator" aria-hidden="true"></div>
       <h2>Danger Zone</h2>
-      <button id="delete-universe" class="button button-destructive" type="button">Delete universe</button>
+      <button id="delete-universe" class="button button-destructive" type="button">Reset Values</button>
       <button class="button button-secondary" type="button" disabled>Deactivated</button>
       <div class="separator" aria-hidden="true"></div>
       <section aria-label="Notifications">

@@ -7,6 +7,7 @@
   --bg-deactivated: var(--bg-element);
 
   --text: hsl(0 0% 95%);
+  --text-on-primary: hsl(0 0% 100%);
   --text-muted: hsl(0 0% 75%);
   --text-deactivated: hsl(0 0% 40%);
 
@@ -58,6 +59,7 @@
   --bg-deactivated: var(--bg-dark);
 
   --text: hsl(0 0% 5%);
+  --text-on-primary: hsl(0 0% 100%);
   --text-muted: hsl(0 0% 25%);
   --text-deactivated: hsl(0 0% 60%);
 
@@ -163,14 +165,6 @@ p {
   line-height: 1.5;
 }
 
-main > p:first-of-type {
-  font-size: 1.1rem;
-}
-
-main > p:nth-of-type(2) {
-  font-size: 0.95rem;
-}
-
 .button {
   width: 100%;
   min-height: 3rem;
@@ -186,6 +180,7 @@ main > p:nth-of-type(2) {
 }
 
 .button-primary {
+  color: var(--text-on-primary);
   background: var(--primary-fill);
 }
 
@@ -258,13 +253,20 @@ form > div {
   gap: 0.9rem;
 }
 
-.card > div > :nth-child(2),
-form > div > :nth-child(2) {
+.card > div > output,
+.card > div > input,
+form > div > .switch,
+form > div > .input,
+form > div > fieldset,
+form > div > label[for="field-checkbox"] {
   justify-self: end;
 }
 
-.card > div > :first-child,
-form > div > :first-child {
+.card > div > span,
+.card > div > label,
+form > div > span,
+form > div > label[for="field-slider"],
+form > div > label[for="field-select"] {
   margin: 0;
   color: var(--text-muted);
   font-size: 0.9rem;
@@ -412,7 +414,9 @@ fieldset {
   padding: 0;
   border: 0;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.7rem;
 }
 
 fieldset label,
