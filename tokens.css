@@ -15,23 +15,19 @@
   --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
   --shadow-soft: 0px 2px 2px hsla(0, 0%, 0%, 0.07);
 
-  /* #C2401F */
-  --primary-dark: hsl(12.15, 72.44%, 34.12%);
-  --primary: hsl(12.15, 72.44%, 44.12%);
+  --primary-dark: hsl(12.15 72.44% 34.12%);
+  --primary: hsl(12.15 72.44% 44.12%);
 
   --secondary-dark: hsl(350 68% 36%);
   --secondary: hsl(350 68% 46%);
 
-  /* gradient from primary to secondary */
   --gradient-dark: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
   --gradient: linear-gradient(90deg, var(--primary), var(--secondary));
   --primary-fill: var(--primary);
   --primary-fill-active: var(--primary-dark);
 
-  /* #2265C3 */
   --primary2-dark: hsl(215 78% 30%);
-  --primary2: hsl(215, 78%, 45%);
-
+  --primary2: hsl(215 78% 45%);
   --secondary2: hsl(200 75% 48%);
   --secondary2-dark: hsl(200 75% 33%);
 
@@ -67,7 +63,7 @@
 
   --separator: rgba(0, 0, 0, 0.1);
 
-  --primary-dark: hsl(12.15, 72.44%, 39.12%);
+  --primary-dark: hsl(12.15 72.44% 39.12%);
   --primary2-dark: hsl(215 70% 42%);
 
   --secondary-dark: hsl(345 68% 36%);
@@ -75,7 +71,6 @@
 
   --gradient-dark: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
   --gradient: linear-gradient(90deg, var(--primary), var(--secondary));
-
 }
 
 :root[data-primary="primary2"] {
@@ -111,7 +106,7 @@ body {
   font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
-.mockup-main {
+main {
   width: 100%;
   max-width: 1000px;
   display: grid;
@@ -120,14 +115,13 @@ body {
   padding: 0.75rem;
 }
 
-.card-brand {
+main > header {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  margin-bottom: 1.25rem;
 }
 
-.brand-logo {
+main > header img {
   width: 3rem;
   height: 3rem;
   object-fit: contain;
@@ -135,18 +129,18 @@ body {
   filter: invert(1);
 }
 
-.brand-name {
+:root[data-theme="light"] main > header img {
+  filter: none;
+}
+
+main > header span {
   color: var(--text);
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.16em;
 }
 
-:root[data-theme="light"] .brand-logo {
-  filter: none;
-}
-
-.mockup-main h1 {
+h1 {
   margin: 0;
   color: var(--text);
   font-size: 2rem;
@@ -154,47 +148,34 @@ body {
   letter-spacing: -0.02em;
 }
 
-.mockup-main h2 {
+h2 {
   margin: 0;
   color: var(--text);
   font-size: 1.5rem;
+  font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
-.intro-copy {
-  margin: 0.9rem 0 1.8rem;
+p {
+  margin: 0;
   color: var(--text-muted);
-  font-size: 1.1rem;
   line-height: 1.5;
 }
 
-.button-showcase {
-  display: grid;
-  gap: 0.75rem;
-  justify-items: start;
+main > p:first-of-type {
+  font-size: 1.1rem;
 }
 
-.button-showcase-lower {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-}
-
-.button-showcase-lower .button {
-  white-space: nowrap;
-}
-
-.inline-action {
-  margin: 0;
-  color: var(--text-muted);
+main > p:nth-of-type(2) {
   font-size: 0.95rem;
 }
 
 .button {
   width: 100%;
   min-height: 3rem;
+  border: 0;
   border-radius: var(--radius-button);
-  border: none;
   color: var(--text);
   font: inherit;
   font-weight: 700;
@@ -204,20 +185,20 @@ body {
   cursor: pointer;
 }
 
-.button.primary {
+.button-primary {
   background: var(--primary-fill);
 }
 
-.button.secondary {
+.button-secondary {
   background: var(--bg-element);
 }
 
-.button.destructive {
+.button-destructive {
   background: var(--bg-element);
   color: var(--destructive);
 }
 
-.button.inline {
+.button-inline {
   width: auto;
   min-height: 0;
   background: transparent;
@@ -230,29 +211,27 @@ body {
   line-height: inherit;
 }
 
-.button.active,
 .button:active {
   box-shadow: none;
 }
 
-.button.primary:active {
+.button-primary:active {
   background: var(--primary-fill-active);
 }
 
-.button.secondary:active {
+.button-secondary:active {
   background: var(--bg-dark);
 }
 
-.button.destructive:active {
+.button-destructive:active {
   background: var(--destructive);
   color: var(--text);
 }
 
-.button.inline:active {
+.button-inline:active {
   color: var(--text);
 }
 
-.button.disabled,
 .button:disabled {
   background: var(--bg-deactivated);
   color: var(--text-deactivated);
@@ -261,30 +240,9 @@ body {
   pointer-events: none;
 }
 
-.button.disabled:active,
-.button:disabled:active {
-  background: var(--bg-deactivated);
-  color: var(--text-deactivated);
-  box-shadow: none;
-}
-
-.form-showcase {
-  margin-top: 1.25rem;
+.card {
   display: grid;
   gap: 0.75rem;
-}
-
-.separator {
-  width: 100%;
-  height: 1px;
-  background: var(--separator);
-}
-
-.card,
-.output-showcase {
-  display: grid;
-  gap: 0.75rem;
-  margin-top: 0.35rem;
   padding: 1rem;
   border: none;
   border-radius: var(--radius-card);
@@ -292,113 +250,28 @@ body {
   box-shadow: var(--shadow);
 }
 
-.danger-zone {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
-  display: block;
-  width: 100%;
-}
-
-.danger-zone .button {
-  display: block;
-  width: 100%;
-  inline-size: 100%;
-  max-width: none;
-  margin-top: 0.75rem;
-}
-
-.danger-zone summary {
-  margin: 0;
-  color: var(--text);
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  cursor: pointer;
-}
-
-.notifications {
-  margin-top: 1.25rem;
-  display: grid;
-  gap: 0.6rem;
-}
-
-.notifications-card .notifications {
-  margin-top: 0;
-}
-
-.notification {
-  margin: 0;
-  padding: 0.65rem 0.85rem;
-  border: 1px solid transparent;
-  border-radius: var(--radius-button);
-  font-size: 0.9rem;
-  line-height: 1.35;
-  font-weight: 600;
-}
-
-.notification.success {
-  color: var(--success-dark);
-  background: var(--success-light);
-  border-color: var(--success-dark);
-}
-
-.notification.warning {
-  color: var(--warning-dark);
-  background: var(--warning-light);
-  border-color: var(--warning-dark);
-}
-
-.notification.destructive {
-  color: var(--destructive-dark);
-  background: var(--destructive-light);
-  border-color: var(--destructive-dark);
-}
-
-.form-row {
+.card > div,
+form > div {
   display: grid;
   grid-template-columns: minmax(8rem, 9.5rem) minmax(0, 1fr);
   align-items: center;
   gap: 0.9rem;
 }
 
-.form-row> :nth-child(2) {
+.card > div > :nth-child(2),
+form > div > :nth-child(2) {
   justify-self: end;
 }
 
-.form-row>label,
-.row-label {
+.card > div > :first-child,
+form > div > :first-child {
   margin: 0;
   color: var(--text-muted);
   font-size: 0.9rem;
   font-weight: 600;
 }
 
-.control {
-  width: 100%;
-  border: none;
-  border-radius: var(--radius-button);
-  background: var(--bg-element);
-  color: var(--text);
-  font: inherit;
-  padding: 0.55rem 0.75rem;
-}
-
-select.control {
-  -webkit-appearance: none;
-  appearance: none;
-  padding-right: 2.25rem;
-  background-image:
-    linear-gradient(45deg, transparent 50%, var(--text-muted) 50%),
-    linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
-  background-position:
-    calc(100% - 1.05rem) calc(50% + 0.08rem),
-    calc(100% - 0.72rem) calc(50% + 0.08rem);
-  background-size: 0.34rem 0.34rem;
-  background-repeat: no-repeat;
-}
-
-.output-value {
+.card output {
   width: 100%;
   display: inline-flex;
   justify-content: flex-end;
@@ -409,30 +282,60 @@ select.control {
   font-variant-numeric: tabular-nums;
 }
 
-.text-primary {
+.card strong {
   color: var(--primary);
+  font-weight: 500;
 }
 
-:root[data-gradient="enabled"] .button.inline,
-:root[data-gradient="enabled"] .text-primary {
-  color: transparent;
-  background-image: var(--gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+form {
+  display: grid;
+  gap: 0.75rem;
 }
 
-.control-range {
-  --range-percent: 50%;
+.input {
   width: 100%;
+  border: none;
+  border-radius: var(--radius-button);
+  background: var(--bg-element);
+  color: var(--text);
+  font: inherit;
+  padding: 0.55rem 0.75rem;
+}
+
+select.input {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 2.25rem;
+  background-image:
+    linear-gradient(45deg,
+      transparent 41%,
+      var(--text-muted) 41%,
+      var(--text-muted) 59%,
+      transparent 59%),
+    linear-gradient(-45deg,
+      transparent 41%,
+      var(--text-muted) 41%,
+      var(--text-muted) 59%,
+      transparent 59%);
+  background-position:
+    calc(100% - 1.02rem) 50%,
+    calc(100% - 0.7rem) 50%;
+  background-size: 0.44rem 0.44rem;
+  background-repeat: no-repeat;
+}
+
+.input-range {
+  --range-percent: 50%;
   margin: 0;
   height: 1.5rem;
+  padding: 0;
+  border: 0;
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
 }
 
-.control-range::-webkit-slider-runnable-track {
+.input-range::-webkit-slider-runnable-track {
   height: 0.4rem;
   border-radius: 999px;
   background: linear-gradient(to right,
@@ -442,19 +345,19 @@ select.control {
       var(--bg-element) 100%);
 }
 
-.control-range::-webkit-slider-thumb {
+.input-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 1rem;
   height: 1rem;
   margin-top: -0.3rem;
-  border: 1px solid var(--text);
+  border: none;
   border-radius: 50%;
   background: var(--text);
 }
 
-.control-range:hover::-webkit-slider-runnable-track,
-.control-range:active::-webkit-slider-runnable-track {
+.input-range:hover::-webkit-slider-runnable-track,
+.input-range:active::-webkit-slider-runnable-track {
   background: linear-gradient(to right,
       var(--text) 0%,
       var(--text) var(--range-percent),
@@ -462,18 +365,18 @@ select.control {
       var(--bg-element) 100%);
 }
 
-.switch-control {
+.switch {
   display: inline-flex;
   align-items: center;
 }
 
-.switch-input {
+.switch input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-.switch-track {
+.switch span {
   position: relative;
   width: 2.6rem;
   height: 1.5rem;
@@ -482,7 +385,7 @@ select.control {
   background: var(--bg-element);
 }
 
-.switch-track::after {
+.switch span::after {
   content: "";
   position: absolute;
   left: 0.15rem;
@@ -494,27 +397,26 @@ select.control {
   transform: translateY(-50%);
 }
 
-.switch-input:checked+.switch-track {
+.switch input:checked + span {
   border-color: var(--text);
   background: var(--bg-element);
 }
 
-.switch-input:checked+.switch-track::after {
+.switch input:checked + span::after {
   transform: translate(1.02rem, -50%);
   background: var(--text);
 }
 
-.radio-group {
+fieldset {
   margin: 0;
   padding: 0;
   border: 0;
   display: flex;
-  align-items: center;
   gap: 1rem;
 }
 
-.radio-option,
-.checkbox-control {
+fieldset label,
+label[for="field-checkbox"] {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -525,8 +427,8 @@ select.control {
   user-select: none;
 }
 
-.radio-option input,
-.checkbox-control input {
+fieldset input[type="radio"],
+label[for="field-checkbox"] input[type="checkbox"] {
   margin: 0;
   width: 1.25rem;
   height: 1.25rem;
@@ -545,34 +447,34 @@ select.control {
     transform 120ms ease;
 }
 
-.radio-option input[type="radio"] {
+fieldset input[type="radio"] {
   border-radius: 50%;
 }
 
-.radio-option input[type="radio"]::before {
+fieldset input[type="radio"]::before {
   content: "";
-  width: 0.50rem;
-  height: 0.50rem;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 50%;
   background: var(--text);
   transform: scale(0);
   transition: transform 140ms ease;
 }
 
-.radio-option input[type="radio"]:checked {
+fieldset input[type="radio"]:checked {
   border-color: var(--text);
   box-shadow: inset 0 0 0 1px var(--text), var(--shadow-soft);
 }
 
-.radio-option input[type="radio"]:checked::before {
+fieldset input[type="radio"]:checked::before {
   transform: scale(1);
 }
 
-.checkbox-control input[type="checkbox"] {
+label[for="field-checkbox"] input[type="checkbox"] {
   border-radius: 0.36rem;
 }
 
-.checkbox-control input[type="checkbox"]::before {
+label[for="field-checkbox"] input[type="checkbox"]::before {
   content: "";
   width: 0.8rem;
   height: 0.8rem;
@@ -585,37 +487,84 @@ select.control {
     transform 140ms ease;
 }
 
-.checkbox-control input[type="checkbox"]:checked {
+label[for="field-checkbox"] input[type="checkbox"]:checked {
   background: var(--text);
   border-color: var(--text);
   box-shadow: inset 0 0 0 1px var(--text), var(--shadow-soft);
 }
 
-.checkbox-control input[type="checkbox"]:checked::before {
+label[for="field-checkbox"] input[type="checkbox"]:checked::before {
   opacity: 1;
   transform: scale(1);
 }
 
-.radio-option input:hover,
-.checkbox-control input:hover {
+fieldset input[type="radio"]:hover,
+label[for="field-checkbox"] input[type="checkbox"]:hover {
   border-color: var(--text-muted);
 }
 
-.radio-option input:active,
-.checkbox-control input:active {
+fieldset input[type="radio"]:active,
+label[for="field-checkbox"] input[type="checkbox"]:active {
   transform: scale(0.96);
 }
 
-.radio-option input:focus-visible,
-.checkbox-control input:focus-visible {
+fieldset input[type="radio"]:focus-visible,
+label[for="field-checkbox"] input[type="checkbox"]:focus-visible {
   outline: 2px solid var(--text);
   outline-offset: 2px;
 }
 
-.radio-option input:disabled,
-.checkbox-control input:disabled {
+fieldset input[type="radio"]:disabled,
+label[for="field-checkbox"] input[type="checkbox"]:disabled {
   background: var(--bg-deactivated);
   border-color: var(--text-deactivated);
   box-shadow: none;
   cursor: not-allowed;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background: var(--separator);
+}
+
+.notification {
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  border: none;
+  border-radius: var(--radius-button);
+  font-size: 0.9rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.notification + .notification {
+  margin-top: 0.6rem;
+}
+
+.notification[data-tone="success"] {
+  color: var(--success-dark);
+  background: var(--success-light);
+  border-color: var(--success-dark);
+}
+
+.notification[data-tone="warning"] {
+  color: var(--warning-dark);
+  background: var(--warning-light);
+  border-color: var(--warning-dark);
+}
+
+.notification[data-tone="destructive"] {
+  color: var(--destructive-dark);
+  background: var(--destructive-light);
+  border-color: var(--destructive-dark);
+}
+
+:root[data-gradient="enabled"] .button-inline,
+:root[data-gradient="enabled"] .card strong {
+  color: transparent;
+  background-image: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

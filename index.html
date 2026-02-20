@@ -10,121 +10,101 @@
 </head>
 
 <body>
-  <main class="mockup-main">
-    <header class="card-brand">
-      <img class="brand-logo" src="./assets/tri2max_logo_lightMode.png" alt="Tri2Max logo" />
-      <span class="brand-name">TRI2MAX</span>
+  <main>
+    <header>
+      <img src="./assets/tri2max_logo_lightMode.png" alt="Tri2Max logo" />
+      <span>TRI2MAX</span>
     </header>
+
     <h1>Main Heading</h1>
-    <p class="intro-copy">A muted shade for the rest of the text.</p>
-    <p class="inline-action">
+    <p>A muted shade for the rest of the text.</p>
+    <p>
       Inline action:
-      <button class="button inline" type="button">Learn more</button>,
+      <button class="button button-inline" type="button">Learn more</button>,
       but dont learn too much.
     </p>
-    <div class="button-showcase" aria-label="Button variants">
-      <button id="theme-toggle" class="button primary" type="button" aria-label="Toggle theme">Go to light
-        mode</button>
-      <button id="primary-toggle" class="button secondary" type="button" aria-controls="notifications-card"
-        aria-expanded="false">Change Primary Color</button>
+
+    <div style="display: grid; gap: 0.75rem;">
+      <button id="theme-toggle" class="button button-primary" type="button" aria-label="Toggle theme">Go to light mode</button>
+      <button id="primary-toggle" class="button button-secondary" type="button" aria-pressed="false">Change Primary Color</button>
     </div>
 
     <section class="card" aria-label="Output card">
-      <div class="form-row">
-        <span class="row-label">Heart rate</span>
-        <output class="output-value">
-          <span class="text-primary">156&hairsp;bpm</span>
-        </output>
+      <div>
+        <span>Heart rate</span>
+        <output><strong>156&hairsp;bpm</strong></output>
       </div>
-      <div class="form-row">
-        <span class="row-label">Power</span>
-        <output class="output-value">
-          <span class="text-primary">351&hairsp;W</span>
-        </output>
+      <div>
+        <span>Power</span>
+        <output><strong>351&hairsp;W</strong></output>
       </div>
-      <div class="form-row">
-        <span class="row-label">Pace</span>
-        <output class="output-value">
-          <span class="text-primary">4:05/km</span>
-        </output>
+      <div>
+        <span>Pace</span>
+        <output><strong>4:05/km</strong></output>
       </div>
-
-      <div class="form-row">
+      <div>
         <label for="field-text">Text Input</label>
-        <input id="field-text" class="control" type="text" value="My input text" />
+        <input id="field-text" class="input" type="text" value="My input text" />
       </div>
-
-      <button class="button secondary" type="button">Card Button</button>
+      <button class="button button-secondary" type="button">Card Button</button>
     </section>
 
-    <section class="form-showcase" aria-label="Form elements">
-
-      <div class="form-row">
-        <label for="field-switch">Use Gradient</label>
-        <label class="switch-control" for="field-switch">
-          <input id="field-switch" class="switch-input" type="checkbox" checked />
-          <span class="switch-track" aria-hidden="true"></span>
+    <form aria-label="Form elements">
+      <div>
+        <span>Use Gradient</span>
+        <label class="switch" for="field-switch">
+          <input id="field-switch" type="checkbox" checked />
+          <span aria-hidden="true"></span>
         </label>
       </div>
 
-      <div class="form-row">
+      <div>
         <label for="field-slider">Slider</label>
-        <input id="field-slider" class="control-range" type="range" min="0" max="100" value="60" />
+        <input id="field-slider" class="input input-range" type="range" min="0" max="100" value="60" />
       </div>
 
-      <div class="form-row">
+      <div>
         <label for="field-select">Dropdown / Select</label>
-        <select id="field-select" class="control">
+        <select id="field-select" class="input">
           <option>Option A</option>
           <option>Option B</option>
           <option>Option C</option>
         </select>
       </div>
 
-      <div class="form-row">
-        <span class="row-label">Radio Group</span>
-        <fieldset class="radio-group">
-          <label class="radio-option">
+      <div>
+        <span>Radio Group</span>
+        <fieldset>
+          <label>
             <input type="radio" name="field-radio" checked />
             One
           </label>
-          <label class="radio-option">
+          <label>
             <input type="radio" name="field-radio" />
             Two
           </label>
         </fieldset>
       </div>
 
-      <div class="form-row">
-        <label for="field-checkbox">Checkbox</label>
-        <label class="checkbox-control" for="field-checkbox">
-          <input id="field-checkbox" type="checkbox" checked />
-          Accept
+      <div>
+        <span>Danger Zone</span>
+        <label for="field-checkbox">
+          <input id="field-checkbox" type="checkbox" />
+          Show
         </label>
       </div>
+    </form>
 
+    <section id="danger-zone-area" style="display: grid; gap: 0.75rem;">
       <div class="separator" aria-hidden="true"></div>
-
-      <details class="danger-zone">
-        <summary>Danger Zone</summary>
-        <button class="button destructive" type="button">Delete universe</button>
-      </details>
-    </section>
-
-    <div class="separator" aria-hidden="true"></div>
-
-    <div class="button-showcase button-showcase-lower" aria-label="Button variants">
-      <button id="notifications-toggle" class="button secondary" type="button" aria-controls="notifications-card"
-        aria-expanded="false">Notifications</button>
-      <button id="notifications-toggle" class="button secondary disabled" type="button"
-        aria-controls="notifications-card" aria-expanded="false" disabled>Deactivated</button>
-    </div>
-
-    <section id="notifications-card" class="notifications-card" hidden>
-      <section class="notifications" aria-label="Notifications">
-        <p class="notification success">Success: Changes were saved successfully.</p>
-        <p class="notification warning">Warning: Your session will expire in 2 minutes.</p>
-        <p class="notification destructive">Destructive: This action cannot be undone.</p>
+      <h2>Danger Zone</h2>
+      <button class="button button-destructive" type="button">Delete universe</button>
+      <button class="button button-secondary" type="button" disabled>Deactivated</button>
+      <div class="separator" aria-hidden="true"></div>
+      <section aria-label="Notifications">
+        <p class="notification" data-tone="success">Success: Changes were saved successfully.</p>
+        <p class="notification" data-tone="warning">Warning: Your session will expire in 2 minutes.</p>
+        <p class="notification" data-tone="destructive">Destructive: This action cannot be undone.</p>
       </section>
     </section>
   </main>
@@ -134,13 +114,13 @@
       const root = document.documentElement;
       const toggleButton = document.getElementById("theme-toggle");
       const primaryToggleButton = document.getElementById("primary-toggle");
-      const notificationsToggleButton = document.getElementById("notifications-toggle");
-      const notificationsCard = document.getElementById("notifications-card");
-      const rangeControls = document.querySelectorAll(".control-range");
+      const dangerZoneToggle = document.getElementById("field-checkbox");
+      const dangerZoneArea = document.getElementById("danger-zone-area");
+      const rangeControls = document.querySelectorAll('input[type="range"]');
       const gradientSwitch = document.getElementById("field-switch");
       const STORAGE_KEY = "mockup-theme";
       const PRIMARY_STORAGE_KEY = "mockup-primary-color";
-      const NOTIFICATIONS_STORAGE_KEY = "mockup-notifications-visibility";
+      const DANGER_ZONE_STORAGE_KEY = "mockup-danger-zone-visibility";
       const GRADIENT_STORAGE_KEY = "mockup-gradient-enabled";
 
       const setTheme = (theme) => {
@@ -217,22 +197,21 @@
         localStorage.setItem(GRADIENT_STORAGE_KEY, isEnabled ? "enabled" : "disabled");
       });
 
-      const setNotificationsVisibility = (isVisible) => {
-        notificationsCard.hidden = !isVisible;
-        notificationsToggleButton.setAttribute("aria-expanded", isVisible ? "true" : "false");
-        notificationsToggleButton.textContent = isVisible ? "Hide Notifications" : "Show Notifications";
+      const setDangerZoneVisibility = (isVisible) => {
+        dangerZoneArea.style.display = isVisible ? "grid" : "none";
+        dangerZoneToggle.checked = isVisible;
       };
 
-      const savedNotificationsVisibility = localStorage.getItem(NOTIFICATIONS_STORAGE_KEY);
-      const initialNotificationsVisible = savedNotificationsVisibility === null
-        ? !notificationsCard.hidden
-        : savedNotificationsVisibility === "visible";
-      setNotificationsVisibility(initialNotificationsVisible);
+      const savedDangerZoneVisibility = localStorage.getItem(DANGER_ZONE_STORAGE_KEY);
+      const initialDangerZoneVisible = savedDangerZoneVisibility === null
+        ? dangerZoneToggle?.checked ?? false
+        : savedDangerZoneVisibility === "visible";
+      setDangerZoneVisibility(initialDangerZoneVisible);
 
-      notificationsToggleButton.addEventListener("click", () => {
-        const nextNotificationsVisible = notificationsCard.hidden;
-        setNotificationsVisibility(nextNotificationsVisible);
-        localStorage.setItem(NOTIFICATIONS_STORAGE_KEY, nextNotificationsVisible ? "visible" : "hidden");
+      dangerZoneToggle?.addEventListener("change", (event) => {
+        const isVisible = event.target.checked;
+        setDangerZoneVisibility(isVisible);
+        localStorage.setItem(DANGER_ZONE_STORAGE_KEY, isVisible ? "visible" : "hidden");
       });
 
       const setRangePercent = (range) => {
