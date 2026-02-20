@@ -10,8 +10,8 @@
 :root {
   --bg-dark: hsl(0 0% 0%);
   --bg: hsl(0 0% 6%);
-  --bg-light: hsl(0 0% 9%);
-  --bg-element: hsl(0 0% 16%);
+  --bg-light: hsl(0 0% 11%);
+  --bg-element: hsl(0 0% 18%);
   --bg-deactivated: var(--bg-element);
 
   --text: hsl(0 0% 95%);
@@ -60,7 +60,7 @@
 }
 
 :root[data-theme="light"] {
-  --bg-dark: hsl(30 5% 89%);
+  --bg-dark: hsl(30 5% 87%);
   --bg: hsl(30 5% 92%);
   --bg-light: hsl(30 5% 95%);
   --bg-element: hsl(0 0% 100%);
