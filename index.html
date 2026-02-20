@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>tri2max Design</title>
   <link rel="icon" type="image/png" href="./assets/tri2max_logo_darkMode.png" />
-  <link rel="stylesheet" href="./tokens.css?v=20260220-2" />
+  <link rel="stylesheet" href="./tokens.css?v=20260220-4" />
 </head>
 
 <body>
@@ -91,6 +91,15 @@
       </div>
 
       <div>
+        <label class="heading-3" for="field-progress">Scroll State</label>
+        <div id="field-progress" class="progressbar" role="progressbar" aria-label="Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72">
+          <div class="progressbar-track">
+            <div class="progressbar-fill" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
         <span class="heading-3">Danger Zone</span>
         <label class="text" for="field-checkbox">
           <input id="field-checkbox" type="checkbox" />
@@ -130,6 +139,7 @@
       const heartRateOutput = document.getElementById("output-heart-rate");
       const powerOutput = document.getElementById("output-power");
       const paceOutput = document.getElementById("output-pace");
+      const progressBar = document.getElementById("field-progress");
       const restoreValuesButton = document.getElementById("restore-values");
       const cardButton = document.getElementById("card-button");
       const paceSlider = document.getElementById("field-slider");
@@ -290,6 +300,20 @@
         });
       };
 
+      const setProgressFromScroll = () => {
+        if (!progressBar) {
+          return;
+        }
+
+        const scrollElement = document.documentElement;
+        const maxScroll = scrollElement.scrollHeight - scrollElement.clientHeight;
+        const currentScroll = window.scrollY || scrollElement.scrollTop || 0;
+        const progressPercent = maxScroll <= 0 ? 0 : Math.min(100, Math.max(0, (currentScroll / maxScroll) * 100));
+
+        progressBar.style.setProperty("--progress-value", `${progressPercent}%`);
+        progressBar.setAttribute("aria-valuenow", String(Math.round(progressPercent)));
+      };
+
       const restorePerformanceValues = () => {
         setHeartRate(DEFAULT_HEART_RATE);
         setPower(DEFAULT_POWER);
@@ -353,9 +377,13 @@
         resetUniverse();
       });
 
+      window.addEventListener("scroll", setProgressFromScroll, { passive: true });
+      window.addEventListener("resize", setProgressFromScroll);
+
       mainHeading.textContent = headingInput.value.trim() || DEFAULT_HEADING;
       restorePerformanceValues();
       setNotificationTone(DEFAULT_NOTIFICATION_TONE);
+      setProgressFromScroll();
     })();
   </script>
 </body>
