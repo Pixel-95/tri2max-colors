@@ -11,119 +11,116 @@
 
 <body>
   <main class="mockup-main">
-    <article class="card">
-      <header class="card-brand">
-        <img class="brand-logo" src="./assets/tri2max_logo_lightMode.png" alt="Tri2Max logo" />
-        <span class="brand-name">TRI2MAX</span>
-      </header>
-      <h1>Main Heading</h1>
-      <p>A muted shade for the rest of the text.</p>
-      <p class="inline-action">
-        Inline action:
-        <button class="button inline" type="button">Learn more</button>,
-        but dont learn too much.
-      </p>
-      <div class="button-showcase" aria-label="Button variants">
-        <button id="theme-toggle" class="button primary" type="button" aria-label="Toggle theme">Go to light
-          mode</button>
-        <button id="primary-toggle" class="button secondary" type="button" aria-controls="notifications-card"
-          aria-expanded="false">Change Primary Color</button>
+    <header class="card-brand">
+      <img class="brand-logo" src="./assets/tri2max_logo_lightMode.png" alt="Tri2Max logo" />
+      <span class="brand-name">TRI2MAX</span>
+    </header>
+    <h1>Main Heading</h1>
+    <p class="intro-copy">A muted shade for the rest of the text.</p>
+    <p class="inline-action">
+      Inline action:
+      <button class="button inline" type="button">Learn more</button>,
+      but dont learn too much.
+    </p>
+    <div class="button-showcase" aria-label="Button variants">
+      <button id="theme-toggle" class="button primary" type="button" aria-label="Toggle theme">Go to light
+        mode</button>
+      <button id="primary-toggle" class="button secondary" type="button" aria-controls="notifications-card"
+        aria-expanded="false">Change Primary Color</button>
+    </div>
+
+    <section class="output-showcase" aria-label="Output fields">
+      <div class="form-row">
+        <span class="row-label">Heart rate</span>
+        <output class="output-value">
+          <span class="text-primary">156&hairsp;bpm</span>
+        </output>
+      </div>
+      <div class="form-row">
+        <span class="row-label">Power</span>
+        <output class="output-value">
+          <span class="text-primary">351&hairsp;W</span>
+        </output>
+      </div>
+      <div class="form-row">
+        <span class="row-label">Pace</span>
+        <output class="output-value">
+          <span class="text-primary">4:05/km</span>
+        </output>
+      </div>
+    </section>
+
+    <section class="form-showcase" aria-label="Form elements">
+
+      <div class="form-row">
+        <label for="field-switch">Use Gradient</label>
+        <label class="switch-control" for="field-switch">
+          <input id="field-switch" class="switch-input" type="checkbox" checked />
+          <span class="switch-track" aria-hidden="true"></span>
+        </label>
       </div>
 
-      <section class="output-showcase" aria-label="Output fields">
-        <div class="form-row">
-          <span class="row-label">Heart rate</span>
-          <output class="output-value">
-            <span class="text-primary">156&hairsp;bpm</span>
-          </output>
-        </div>
-        <div class="form-row">
-          <span class="row-label">Power</span>
-          <output class="output-value">
-            <span class="text-primary">351&hairsp;W</span>
-          </output>
-        </div>
-        <div class="form-row">
-          <span class="row-label">Pace</span>
-          <output class="output-value">
-            <span class="text-primary">4:05/km</span>
-          </output>
-        </div>
-      </section>
-
-      <section class="form-showcase" aria-label="Form elements">
-
-        <div class="form-row">
-          <label for="field-switch">Use Gradient</label>
-          <label class="switch-control" for="field-switch">
-            <input id="field-switch" class="switch-input" type="checkbox" checked />
-            <span class="switch-track" aria-hidden="true"></span>
-          </label>
-        </div>
-
-        <div class="form-row">
-          <label for="field-text">Text Input</label>
-          <input id="field-text" class="control" type="text" value="My input text" />
-        </div>
-
-        <div class="form-row">
-          <label for="field-slider">Slider</label>
-          <input id="field-slider" class="control-range" type="range" min="0" max="100" value="60" />
-        </div>
-
-        <div class="form-row">
-          <label for="field-select">Dropdown / Select</label>
-          <select id="field-select" class="control">
-            <option>Option A</option>
-            <option>Option B</option>
-            <option>Option C</option>
-          </select>
-        </div>
-
-        <div class="form-row">
-          <span class="row-label">Radio Group</span>
-          <fieldset class="radio-group">
-            <label class="radio-option">
-              <input type="radio" name="field-radio" checked />
-              One
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="field-radio" />
-              Two
-            </label>
-          </fieldset>
-        </div>
-
-        <div class="form-row">
-          <label for="field-checkbox">Checkbox</label>
-          <label class="checkbox-control" for="field-checkbox">
-            <input id="field-checkbox" type="checkbox" checked />
-            Accept
-          </label>
-        </div>
-
-        <details class="danger-zone">
-          <summary>Danger Zone</summary>
-          <button class="button destructive" type="button">Delete universe</button>
-        </details>
-      </section>
-
-      <div class="button-showcase" aria-label="Button variants">
-        <button id="notifications-toggle" class="button secondary" type="button" aria-controls="notifications-card"
-          aria-expanded="false">Show Notifications</button>
-        <button id="notifications-toggle" class="button secondary disabled" type="button"
-          aria-controls="notifications-card" aria-expanded="false" disabled>Cannot be pressed</button>
+      <div class="form-row">
+        <label for="field-text">Text Input</label>
+        <input id="field-text" class="control" type="text" value="My input text" />
       </div>
 
-    </article>
+      <div class="form-row">
+        <label for="field-slider">Slider</label>
+        <input id="field-slider" class="control-range" type="range" min="0" max="100" value="60" />
+      </div>
 
-    <article id="notifications-card" class="card notifications-card" hidden>
+      <div class="form-row">
+        <label for="field-select">Dropdown / Select</label>
+        <select id="field-select" class="control">
+          <option>Option A</option>
+          <option>Option B</option>
+          <option>Option C</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <span class="row-label">Radio Group</span>
+        <fieldset class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="field-radio" checked />
+            One
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="field-radio" />
+            Two
+          </label>
+        </fieldset>
+      </div>
+
+      <div class="form-row">
+        <label for="field-checkbox">Checkbox</label>
+        <label class="checkbox-control" for="field-checkbox">
+          <input id="field-checkbox" type="checkbox" checked />
+          Accept
+        </label>
+      </div>
+
+      <details class="danger-zone">
+        <summary>Danger Zone</summary>
+        <button class="button destructive" type="button">Delete universe</button>
+      </details>
+    </section>
+
+    <div class="button-showcase" aria-label="Button variants">
+      <button id="notifications-toggle" class="button secondary" type="button" aria-controls="notifications-card"
+        aria-expanded="false">Show Notifications</button>
+      <button id="notifications-toggle" class="button secondary disabled" type="button"
+        aria-controls="notifications-card" aria-expanded="false" disabled>Cannot be pressed</button>
+    </div>
+
+    <section id="notifications-card" class="notifications-card" hidden>
       <section class="notifications" aria-label="Notifications">
         <p class="notification success">Success: Changes were saved successfully.</p>
         <p class="notification warning">Warning: Your session will expire in 2 minutes.</p>
         <p class="notification destructive">Destructive: This action cannot be undone.</p>
       </section>
-    </article>
+    </section>
   </main>
 
   <script>
