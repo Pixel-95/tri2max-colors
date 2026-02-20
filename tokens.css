@@ -1,9 +1,9 @@
 /* design/tokens.css */
 :root {
   --bg-dark: hsl(0 0% 0%);
-  --bg: hsl(0 0% 5%);
-  --bg-light: hsl(0 0% 8%);
-  --bg-element: hsl(0 0% 13%);
+  --bg: hsl(0 0% 6%);
+  --bg-light: hsl(0 0% 9%);
+  --bg-element: hsl(0 0% 15%);
   --bg-deactivated: var(--bg-element);
 
   --text: hsl(0 0% 95%);
@@ -55,7 +55,7 @@
 }
 
 :root[data-theme="light"] {
-  --bg-dark: hsl(30 5% 90%);
+  --bg-dark: hsl(30 5% 89%);
   --bg: hsl(30 5% 93%);
   --bg-light: hsl(30 5% 96%);
   --bg-element: hsl(0 0% 100%);
@@ -276,7 +276,8 @@ body {
   gap: 0.75rem;
 }
 
-.card {
+.card,
+.output-showcase {
   display: grid;
   gap: 0.75rem;
   margin-top: 0.35rem;
