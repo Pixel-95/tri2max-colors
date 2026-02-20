@@ -13,7 +13,7 @@
   --bg-light: hsl(0 0% 11%);
   --bg-element: hsl(0 0% 18%);
   --bg-deactivated: var(--bg-element);
-  --bg-modal: color-mix(in srgb, var(--bg-dark) 85%, transparent);
+  --bg-modal: color-mix(in srgb, var(--bg-dark) 88%, transparent);
 
   --text: hsl(0 0% 95%);
   --text-on-primary: hsl(0 0% 100%);
