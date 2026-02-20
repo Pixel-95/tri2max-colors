@@ -16,7 +16,7 @@
       <span>TRI2MAX</span>
     </header>
 
-    <h1>Main Heading</h1>
+    <h1 id="main-heading">Main Heading</h1>
     <p>A muted shade for the rest of the text.</p>
     <p>
       Inline action:
@@ -32,21 +32,21 @@
     <section class="card" aria-label="Output card">
       <div>
         <span>Heart rate</span>
-        <output><strong>156&hairsp;bpm</strong></output>
+        <output><strong id="output-heart-rate">156&hairsp;bpm</strong></output>
       </div>
       <div>
         <span>Power</span>
-        <output><strong>351&hairsp;W</strong></output>
+        <output><strong id="output-power">351&hairsp;W</strong></output>
       </div>
       <div>
         <span>Pace</span>
-        <output><strong>4:05/km</strong></output>
+        <output><strong id="output-pace">4:05/km</strong></output>
       </div>
       <div>
         <label for="field-text">Text Input</label>
-        <input id="field-text" class="input" type="text" value="My input text" />
+        <input id="field-text" class="input" type="text" value="Main Heading" />
       </div>
-      <button class="button button-secondary" type="button">Card Button</button>
+      <button id="card-button" class="button button-secondary" type="button">Randomize Values</button>
     </section>
 
     <form aria-label="Form elements">
@@ -60,15 +60,14 @@
 
       <div>
         <label for="field-slider">Slider</label>
-        <input id="field-slider" class="input input-range" type="range" min="0" max="100" value="60" />
+        <input id="field-slider" class="input input-range" type="range" min="0" max="100" value="23" />
       </div>
 
       <div>
         <label for="field-select">Dropdown / Select</label>
         <select id="field-select" class="input">
-          <option>Option A</option>
-          <option>Option B</option>
-          <option>Option C</option>
+          <option value="metric">Metric</option>
+          <option value="imperial">Imperial</option>
         </select>
       </div>
 
@@ -76,12 +75,16 @@
         <span>Radio Group</span>
         <fieldset>
           <label>
-            <input type="radio" name="field-radio" checked />
-            One
+            <input type="radio" name="field-radio" value="success" checked />
+            Success
           </label>
           <label>
-            <input type="radio" name="field-radio" />
-            Two
+            <input type="radio" name="field-radio" value="warning" />
+            Warning
+          </label>
+          <label>
+            <input type="radio" name="field-radio" value="destructive" />
+            Destructive
           </label>
         </fieldset>
       </div>
@@ -98,13 +101,13 @@
     <section id="danger-zone-area" style="display: grid; gap: 0.75rem;">
       <div class="separator" aria-hidden="true"></div>
       <h2>Danger Zone</h2>
-      <button class="button button-destructive" type="button">Delete universe</button>
+      <button id="delete-universe" class="button button-destructive" type="button">Delete universe</button>
       <button class="button button-secondary" type="button" disabled>Deactivated</button>
       <div class="separator" aria-hidden="true"></div>
       <section aria-label="Notifications">
-        <p class="notification" data-tone="success">Success: Changes were saved successfully.</p>
-        <p class="notification" data-tone="warning">Warning: Your session will expire in 2 minutes.</p>
-        <p class="notification" data-tone="destructive">Destructive: This action cannot be undone.</p>
+        <p id="notification-success" class="notification" data-tone="success">Success: Changes were saved successfully.</p>
+        <p id="notification-warning" class="notification" data-tone="warning">Warning: Your session will expire in 2 minutes.</p>
+        <p id="notification-destructive" class="notification" data-tone="destructive">Destructive: This action cannot be undone.</p>
       </section>
     </section>
   </main>
@@ -116,12 +119,30 @@
       const primaryToggleButton = document.getElementById("primary-toggle");
       const dangerZoneToggle = document.getElementById("field-checkbox");
       const dangerZoneArea = document.getElementById("danger-zone-area");
-      const rangeControls = document.querySelectorAll('input[type="range"]');
+      const mainHeading = document.getElementById("main-heading");
+      const headingInput = document.getElementById("field-text");
+      const heartRateOutput = document.getElementById("output-heart-rate");
+      const powerOutput = document.getElementById("output-power");
+      const paceOutput = document.getElementById("output-pace");
+      const cardButton = document.getElementById("card-button");
+      const paceSlider = document.getElementById("field-slider");
+      const unitSelect = document.getElementById("field-select");
+      const notificationRadios = document.querySelectorAll('input[name="field-radio"]');
+      const notifications = document.querySelectorAll(".notification[data-tone]");
+      const deleteUniverseButton = document.getElementById("delete-universe");
       const gradientSwitch = document.getElementById("field-switch");
       const STORAGE_KEY = "mockup-theme";
       const PRIMARY_STORAGE_KEY = "mockup-primary-color";
       const DANGER_ZONE_STORAGE_KEY = "mockup-danger-zone-visibility";
       const GRADIENT_STORAGE_KEY = "mockup-gradient-enabled";
+      const DEFAULT_HEADING = "Main Heading";
+      const DEFAULT_HEART_RATE = 156;
+      const DEFAULT_POWER = 351;
+      const DEFAULT_SLIDER = 23;
+      const DEFAULT_UNIT = "metric";
+      const DEFAULT_NOTIFICATION_TONE = "success";
+      const DEFAULT_DANGER_ZONE_VISIBLE = false;
+      const HAIR_SPACE = "\u200A";
 
       const setTheme = (theme) => {
         if (theme === "light") {
@@ -214,19 +235,116 @@
         localStorage.setItem(DANGER_ZONE_STORAGE_KEY, isVisible ? "visible" : "hidden");
       });
 
-      const setRangePercent = (range) => {
-        const min = Number(range.min || 0);
-        const max = Number(range.max || 100);
-        const value = Number(range.value || min);
-        const span = max - min;
-        const percent = span === 0 ? 0 : ((value - min) / span) * 100;
-        range.style.setProperty("--range-percent", `${percent}%`);
+      const setHeartRate = (value) => {
+        heartRateOutput.textContent = `${value}${HAIR_SPACE}bpm`;
       };
 
-      rangeControls.forEach((range) => {
-        setRangePercent(range);
-        range.addEventListener("input", () => setRangePercent(range));
+      const setPower = (value) => {
+        powerOutput.textContent = `${value}${HAIR_SPACE}W`;
+      };
+
+      const setRangePercent = (rangeInput) => {
+        const min = Number(rangeInput.min || 0);
+        const max = Number(rangeInput.max || 100);
+        const value = Number(rangeInput.value || min);
+        const span = max - min;
+        const percent = span === 0 ? 0 : ((value - min) / span) * 100;
+        rangeInput.style.setProperty("--range-percent", `${percent}%`);
+      };
+
+      const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+      const paceFromSliderValue = (value) => {
+        const minSeconds = 3 * 60 + 30;
+        const maxSeconds = 6 * 60;
+        return Math.round(minSeconds + ((maxSeconds - minSeconds) * value) / 100);
+      };
+
+      const formatPace = (totalSeconds, unit) => {
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = String(totalSeconds % 60).padStart(2, "0");
+        const suffix = unit === "imperial" ? "/mile" : "/km";
+        return `${minutes}:${seconds}${suffix}`;
+      };
+
+      const setPace = () => {
+        const sliderValue = Number(paceSlider.value || DEFAULT_SLIDER);
+        const paceSeconds = paceFromSliderValue(sliderValue);
+        paceOutput.textContent = formatPace(paceSeconds, unitSelect.value);
+      };
+
+      const setNotificationTone = (tone) => {
+        notifications.forEach((notification) => {
+          notification.hidden = notification.dataset.tone !== tone;
+        });
+
+        notificationRadios.forEach((radio) => {
+          radio.checked = radio.value === tone;
+        });
+      };
+
+      const resetUniverse = () => {
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(PRIMARY_STORAGE_KEY);
+        localStorage.removeItem(GRADIENT_STORAGE_KEY);
+        localStorage.removeItem(DANGER_ZONE_STORAGE_KEY);
+
+        setTheme("dark");
+        setPrimaryColor("primary");
+        setGradientMode(true);
+
+        headingInput.value = DEFAULT_HEADING;
+        mainHeading.textContent = DEFAULT_HEADING;
+
+        setHeartRate(DEFAULT_HEART_RATE);
+        setPower(DEFAULT_POWER);
+
+        paceSlider.value = String(DEFAULT_SLIDER);
+        setRangePercent(paceSlider);
+        unitSelect.value = DEFAULT_UNIT;
+        setPace();
+
+        setNotificationTone(DEFAULT_NOTIFICATION_TONE);
+        setDangerZoneVisibility(DEFAULT_DANGER_ZONE_VISIBLE);
+      };
+
+      headingInput.addEventListener("input", () => {
+        const nextHeading = headingInput.value.trim();
+        mainHeading.textContent = nextHeading || DEFAULT_HEADING;
       });
+
+      cardButton.addEventListener("click", () => {
+        setHeartRate(randomInt(100, 180));
+        setPower(randomInt(150, 400));
+      });
+
+      paceSlider.addEventListener("input", () => {
+        setRangePercent(paceSlider);
+        setPace();
+      });
+
+      unitSelect.addEventListener("change", () => {
+        setPace();
+      });
+
+      notificationRadios.forEach((radio) => {
+        radio.addEventListener("change", () => {
+          if (radio.checked) {
+            setNotificationTone(radio.value);
+          }
+        });
+      });
+
+      deleteUniverseButton.addEventListener("click", () => {
+        resetUniverse();
+      });
+
+      mainHeading.textContent = headingInput.value.trim() || DEFAULT_HEADING;
+      setHeartRate(DEFAULT_HEART_RATE);
+      setPower(DEFAULT_POWER);
+      setRangePercent(paceSlider);
+      setPace();
+      setNotificationTone(DEFAULT_NOTIFICATION_TONE);
     })();
   </script>
 </body>
