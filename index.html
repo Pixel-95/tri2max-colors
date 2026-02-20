@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>tri2max Design</title>
   <link rel="icon" type="image/png" href="./assets/tri2max_logo_darkMode.png" />
-  <link rel="stylesheet" href="./tokens.css?v=20260220-4" />
+  <link rel="stylesheet" href="./tokens.css?v=20260220-5" />
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <p class="text">This is a normal text. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
     <h2 class="heading-2">Control Panel</h2>
     <p class="text">You can open a modal here:
-      <button class="button button-inline text-button" type="button">Learn more</button>,
+      <button id="learn-more-button" class="button button-inline text-button" type="button">Learn more</button>,
       but be careful.
     </p>
 
@@ -127,9 +127,24 @@
     <div aria-hidden="true" style="height: 20vh;"></div>
   </main>
 
+  <div id="learn-more-modal" class="modal-overlay" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-copy">
+      <button id="modal-close-icon" class="modal-close" type="button" aria-label="Close popup">
+        <span aria-hidden="true"></span>
+      </button>
+      <h2 id="modal-title" class="heading-2">Learn More</h2>
+      <p id="modal-copy" class="text">This panel is an interactive design playground. Use the controls to preview themes, typography, and component behavior in real time.</p>
+      <button id="modal-close-button" class="button button-primary text-button" type="button">Close Popup</button>
+    </section>
+  </div>
+
   <script>
     (function () {
       const root = document.documentElement;
+      const learnMoreButton = document.getElementById("learn-more-button");
+      const learnMoreModal = document.getElementById("learn-more-modal");
+      const modalCloseIcon = document.getElementById("modal-close-icon");
+      const modalCloseButton = document.getElementById("modal-close-button");
       const toggleButton = document.getElementById("theme-toggle");
       const primaryToggleButton = document.getElementById("primary-toggle");
       const dangerZoneToggle = document.getElementById("field-checkbox");
@@ -173,6 +188,48 @@
 
       const savedTheme = localStorage.getItem(STORAGE_KEY);
       setTheme(savedTheme === "light" ? "light" : "dark");
+
+      const openLearnMoreModal = () => {
+        if (!learnMoreModal) {
+          return;
+        }
+
+        learnMoreModal.hidden = false;
+        document.body.classList.add("modal-open");
+      };
+
+      const closeLearnMoreModal = () => {
+        if (!learnMoreModal) {
+          return;
+        }
+
+        learnMoreModal.hidden = true;
+        document.body.classList.remove("modal-open");
+      };
+
+      learnMoreButton?.addEventListener("click", () => {
+        openLearnMoreModal();
+      });
+
+      modalCloseIcon?.addEventListener("click", () => {
+        closeLearnMoreModal();
+      });
+
+      modalCloseButton?.addEventListener("click", () => {
+        closeLearnMoreModal();
+      });
+
+      learnMoreModal?.addEventListener("click", (event) => {
+        if (event.target === learnMoreModal) {
+          closeLearnMoreModal();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && learnMoreModal && !learnMoreModal.hidden) {
+          closeLearnMoreModal();
+        }
+      });
 
       toggleButton.addEventListener("click", () => {
         const isLightMode = root.getAttribute("data-theme") === "light";

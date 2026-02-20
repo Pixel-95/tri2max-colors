@@ -116,6 +116,10 @@ body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 main {
   width: 100%;
   max-width: 1000px;
@@ -613,6 +617,84 @@ label[for="field-checkbox"] input[type="checkbox"]:disabled {
 footer {
   display: flex;
   justify-content: center;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(1rem, 4vw);
+  background: color-mix(in srgb, var(--bg-dark) 95%, transparent);
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal {
+  position: relative;
+  display: grid;
+  gap: 0.95rem;
+  width: min(34rem, 80vw);
+  max-width: 80vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 1.25rem;
+  border-radius: var(--radius-card);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--bg-element);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+}
+
+.modal-close span {
+  position: relative;
+  display: block;
+  width: 0.86rem;
+  height: 0.86rem;
+  margin: auto;
+}
+
+.modal-close span::before,
+.modal-close span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--text);
+}
+
+.modal-close span::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.modal-close span::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.modal-close:active {
+  transform: scale(0.96);
+}
+
+.modal .button {
+  margin-top: 0.35rem;
 }
 
 .notification[data-tone="success"] {
