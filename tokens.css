@@ -13,7 +13,7 @@
   --bg-light: hsl(0 0% 11%);
   --bg-element: hsl(0 0% 18%);
   --bg-deactivated: var(--bg-element);
-  --bg-modal: color-mix(in srgb, var(--bg-dark) 88%, transparent);
+  --bg-modal: color-mix(in srgb, var(--bg-dark) 90%, transparent);
 
   --text: hsl(0 0% 95%);
   --text-on-primary: hsl(0 0% 100%);
@@ -66,7 +66,7 @@
   --bg-light: hsl(30 5% 95%);
   --bg-element: hsl(0 0% 100%);
   --bg-deactivated: var(--bg-dark);
-  --bg-modal: color-mix(in srgb, var(--bg-dark) 93%, transparent);
+  --bg-modal: color-mix(in srgb, var(--bg-dark) 94%, transparent);
 
   --text: hsl(0 0% 5%);
   --text-on-primary: hsl(0 0% 100%);
@@ -222,7 +222,7 @@ main > header span {
   font-weight: 700;
 }
 
-.button-primary-small {
+.button.button-primary-small {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -236,25 +236,25 @@ main > header span {
   align-self: start;
 }
 
-.card > .button-primary-small {
+.card > .button.button-primary-small {
   width: fit-content;
 }
 
-.button-primary {
+.button.button-primary {
   color: var(--text-on-primary);
   background: var(--primary-fill);
 }
 
-.button-secondary {
+.button.button-secondary {
   background: var(--bg-element);
 }
 
-.button-destructive {
+.button.button-destructive {
   background: var(--bg-element);
   color: var(--destructive);
 }
 
-.button-inline {
+.button.button-inline {
   width: auto;
   min-height: 0;
   background: transparent;
@@ -266,24 +266,61 @@ main > header span {
   line-height: inherit;
 }
 
+.button.button-back {
+  width: auto;
+  min-height: 0;
+  box-shadow: var(--shadow-soft);
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--bg-element);
+  border-radius: 999px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.button.button-back::before {
+  content: "";
+  width: 0.48rem;
+  height: 0.48rem;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.button.button-back:active {
+  background: var(--bg-dark);
+}
+
 .button:active {
   box-shadow: none;
 }
 
-.button-primary:active {
+.button.button-primary:active {
   background: var(--primary-fill-active);
 }
 
-.button-secondary:active {
+.button.button-secondary:active {
   background: var(--bg-dark);
 }
 
-.button-destructive:active {
+.button.button-destructive:active {
   background: var(--destructive);
   color: var(--text);
 }
 
-.button-inline:active {
+.button.button-inline:active {
   color: var(--text);
 }
 
@@ -521,11 +558,6 @@ label[for="field-checkbox"] input[type="checkbox"] {
   background: var(--bg-element);
   border: 1.5px solid var(--text-deactivated);
   box-shadow: var(--shadow-soft);
-  transition:
-    border-color 160ms ease,
-    box-shadow 160ms ease,
-    background 160ms ease,
-    transform 120ms ease;
 }
 
 fieldset input[type="radio"] {
@@ -539,7 +571,6 @@ fieldset input[type="radio"]::before {
   border-radius: 50%;
   background: var(--text);
   transform: scale(0);
-  transition: transform 140ms ease;
 }
 
 fieldset input[type="radio"]:checked {
@@ -563,9 +594,6 @@ label[for="field-checkbox"] input[type="checkbox"]::before {
   clip-path: polygon(17% 49%, 10% 58%, 41% 87%, 92% 26%, 84% 18%, 41% 71%);
   opacity: 0;
   transform: scale(0.75);
-  transition:
-    opacity 140ms ease,
-    transform 140ms ease;
 }
 
 label[for="field-checkbox"] input[type="checkbox"]:checked {
@@ -650,12 +678,14 @@ footer {
   box-shadow: var(--shadow);
 }
 
-.modal-close {
+.button.modal-close {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
   width: 2rem;
   height: 2rem;
+  min-height: 0;
+  padding: 0;
   border: 0;
   border-radius: 999px;
   background: var(--bg-element);
@@ -663,7 +693,7 @@ footer {
   cursor: pointer;
 }
 
-.modal-close span {
+.button.modal-close span {
   position: relative;
   display: block;
   width: 0.86rem;
@@ -671,8 +701,8 @@ footer {
   margin: auto;
 }
 
-.modal-close span::before,
-.modal-close span::after {
+.button.modal-close span::before,
+.button.modal-close span::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -683,19 +713,19 @@ footer {
   background: var(--text);
 }
 
-.modal-close span::before {
+.button.modal-close span::before {
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.modal-close span::after {
+.button.modal-close span::after {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.modal-close:active {
+.button.modal-close:active {
   transform: scale(0.96);
 }
 
-.modal .button {
+.modal > .button:not(.modal-close) {
   margin-top: 0.35rem;
 }
 
@@ -717,7 +747,7 @@ footer {
   border-color: var(--destructive-dark);
 }
 
-:root[data-gradient="enabled"] .button-inline,
+:root[data-gradient="enabled"] .button.button-inline,
 :root[data-gradient="enabled"] .card strong {
   color: transparent;
   background-image: var(--gradient);

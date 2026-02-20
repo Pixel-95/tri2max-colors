@@ -6,11 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>tri2max Design</title>
   <link rel="icon" type="image/png" href="./assets/tri2max_logo_darkMode.png" />
-  <link rel="stylesheet" href="./tokens.css?v=20260220-8" />
+  <link rel="stylesheet" href="./tokens.css?v=20260220-10" />
 </head>
 
 <body>
   <main>
+    <button id="back-button" class="button button-back" type="button">BACK</button>
+
     <header>
       <img src="./assets/tri2max_logo_lightMode.png" alt="Tri2Max logo" />
       <span>TRI2MAX</span>
@@ -129,7 +131,7 @@
 
   <div id="learn-more-modal" class="modal-overlay" hidden>
     <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-copy">
-      <button id="modal-close-icon" class="modal-close" type="button" aria-label="Close popup">
+      <button id="modal-close-icon" class="button modal-close" type="button" aria-label="Close popup">
         <span aria-hidden="true"></span>
       </button>
       <h2 id="modal-title" class="heading-2">Learn More</h2>
@@ -145,6 +147,7 @@
       const learnMoreModal = document.getElementById("learn-more-modal");
       const modalCloseIcon = document.getElementById("modal-close-icon");
       const modalCloseButton = document.getElementById("modal-close-button");
+      const backButton = document.getElementById("back-button");
       const toggleButton = document.getElementById("theme-toggle");
       const primaryToggleButton = document.getElementById("primary-toggle");
       const dangerZoneToggle = document.getElementById("field-checkbox");
@@ -229,6 +232,10 @@
         if (event.key === "Escape" && learnMoreModal && !learnMoreModal.hidden) {
           closeLearnMoreModal();
         }
+      });
+
+      backButton?.addEventListener("click", () => {
+        window.history.back();
       });
 
       toggleButton.addEventListener("click", () => {
