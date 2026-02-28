@@ -51,8 +51,8 @@ secondary_soft
 secondary_border
 Falls du mit Gradient arbeitest:
 
-gradient_primary_start
-gradient_primary_end
+gradient_from
+gradient_to
 
 success_background
 success_text

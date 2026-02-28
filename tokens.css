@@ -25,30 +25,29 @@
   --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
   --shadow-soft: 0px 2px 2px hsla(0, 0%, 0%, 0.07);
 
-  --primary-dark: hsl(12.15 72.44% 34.12%);
-  --primary: hsl(12.15 72.44% 44.12%);
+  --gradient-from-dark: hsl(20 70% 40%);
+  --gradient-from: hsl(20 70% 50%);
 
-  --secondary-dark: hsl(350 68% 36%);
-  --secondary: hsl(350 68% 46%);
+  --gradient-to-dark: hsl(5 70% 40%);
+  --gradient-to: hsl(5 70% 50%);
 
-  --primary-dark: hsl(12.15 72.44% 34.12%);
-  --primary: hsl(25 70% 50%);
+  --gradient-dark: linear-gradient(90deg, var(--gradient-from-dark), var(--gradient-to-dark));
+  --gradient: linear-gradient(90deg, var(--gradient-from), var(--gradient-to));
 
-  --secondary-dark: hsl(350 68% 36%);
-  --secondary: hsl(5 70% 50%);
+  --primary-dark: hsl(10 70% 40%);
+  --primary: hsl(10 70% 50%);
 
-  --gradient-dark: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
-  --gradient: linear-gradient(90deg, var(--primary), var(--secondary));
   --primary-fill: var(--primary);
   --primary-fill-active: var(--primary-dark);
 
-  --primary2-dark: hsl(215 78% 30%);
-  --primary2: hsl(215 78% 45%);
-  --secondary2: hsl(200 75% 48%);
-  --secondary2-dark: hsl(200 75% 33%);
+  --gradient2-from-dark: hsl(200 75% 33%);
+  --gradient2-from: hsl(200 75% 48%);
 
-  --gradient2-dark: linear-gradient(90deg, var(--secondary2-dark), var(--primary2-dark));
-  --gradient2: linear-gradient(90deg, var(--secondary2), var(--primary2));
+  --gradient2-to-dark: hsl(215 78% 30%);
+  --gradient2-to: hsl(215 78% 45%);
+
+  --primary2-dark: hsl(207.5 76.5% 31.5%);
+  --primary2: hsl(207.5 76.5% 46.5%);
 
   --destructive: hsl(355 100% 45%);
   --destructive-dark: hsl(0 70% 35%);
@@ -81,17 +80,17 @@
 
   --separator: rgba(0, 0, 0, 0.1);
 
-  --gradient-dark: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
-  --gradient: linear-gradient(90deg, var(--primary), var(--secondary));
+  --gradient-dark: linear-gradient(90deg, var(--gradient-from-dark), var(--gradient-to-dark));
+  --gradient: linear-gradient(90deg, var(--gradient-from), var(--gradient-to));
 }
 
 :root[data-primary="primary2"] {
+  --gradient-from: var(--gradient2-from);
+  --gradient-from-dark: var(--gradient2-from-dark);
+  --gradient-to: var(--gradient2-to);
+  --gradient-to-dark: var(--gradient2-to-dark);
   --primary: var(--primary2);
   --primary-dark: var(--primary2-dark);
-  --secondary: var(--secondary2);
-  --secondary-dark: var(--secondary2-dark);
-  --gradient: var(--gradient2);
-  --gradient-dark: var(--gradient2-dark);
 }
 
 :root[data-gradient="enabled"] {
@@ -429,7 +428,7 @@ select.input {
   border-radius: 999px;
   background: linear-gradient(to right,
       var(--primary) 0%,
-      var(--secondary) var(--range-percent),
+      var(--primary) var(--range-percent),
       var(--bg-element) var(--range-percent),
       var(--bg-element) 100%);
 }
@@ -449,7 +448,17 @@ select.input {
 .input-range:active::-webkit-slider-runnable-track {
   background: linear-gradient(to right,
       var(--primary) 0%,
-      var(--secondary) var(--range-percent),
+      var(--primary) var(--range-percent),
+      var(--bg-element) var(--range-percent),
+      var(--bg-element) 100%);
+}
+
+:root[data-gradient="enabled"] .input-range::-webkit-slider-runnable-track,
+:root[data-gradient="enabled"] .input-range:hover::-webkit-slider-runnable-track,
+:root[data-gradient="enabled"] .input-range:active::-webkit-slider-runnable-track {
+  background: linear-gradient(to right,
+      var(--gradient-from) 0%,
+      var(--gradient-to) var(--range-percent),
       var(--bg-element) var(--range-percent),
       var(--bg-element) 100%);
 }
@@ -478,7 +487,7 @@ select.input {
   max-width: 100%;
   height: 100%;
   border-radius: inherit;
-  background: var(--gradient);
+  background: var(--primary-fill);
   box-shadow: none;
 }
 
