@@ -31,6 +31,12 @@
   --secondary-dark: hsl(350 68% 36%);
   --secondary: hsl(350 68% 46%);
 
+  --primary-dark: hsl(12.15 72.44% 34.12%);
+  --primary: hsl(25 70% 50%);
+
+  --secondary-dark: hsl(350 68% 36%);
+  --secondary: hsl(5 70% 50%);
+
   --gradient-dark: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
   --gradient: linear-gradient(90deg, var(--primary), var(--secondary));
   --primary-fill: var(--primary);
@@ -44,9 +50,9 @@
   --gradient2-dark: linear-gradient(90deg, var(--secondary2-dark), var(--primary2-dark));
   --gradient2: linear-gradient(90deg, var(--secondary2), var(--primary2));
 
-  --destructive: hsl(0 85% 45%);
-  --destructive-dark: hsl(0 65% 35%);
-  --destructive-light: hsl(0 65% 92%);
+  --destructive: hsl(355 100% 45%);
+  --destructive-dark: hsl(0 70% 35%);
+  --destructive-light: hsl(0 70% 92%);
 
   --warning-dark: hsl(30 80% 40%);
   --warning: hsl(45 80% 45%);
@@ -74,12 +80,6 @@
   --text-deactivated: hsl(0 0% 60%);
 
   --separator: rgba(0, 0, 0, 0.1);
-
-  --primary-dark: hsl(12.15 72.44% 39.12%);
-  --primary2-dark: hsl(215 70% 42%);
-
-  --secondary-dark: hsl(345 68% 36%);
-  --secondary: hsl(345 68% 46%);
 
   --gradient-dark: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
   --gradient: linear-gradient(90deg, var(--primary), var(--secondary));
@@ -250,8 +250,8 @@ main > header span {
 }
 
 .button.button-destructive {
-  background: var(--bg-element);
-  color: var(--destructive);
+  background: var(--destructive);
+  color: var(--text-on-primary);
 }
 
 .button.button-inline {
@@ -316,8 +316,8 @@ main > header span {
 }
 
 .button.button-destructive:active {
-  background: var(--destructive);
-  color: var(--text);
+  background: var(--destructive-dark);
+  color: var(--text-on-primary);
 }
 
 .button.button-inline:active {
