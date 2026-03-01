@@ -704,16 +704,6 @@ footer {
   justify-content: center;
 }
 
-@media (max-width: 760px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-media {
-    min-height: 14rem;
-  }
-}
-
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -819,4 +809,109 @@ footer {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 760px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  main {
+    gap: 0.85rem;
+    padding: 0.25rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding: 0.85rem;
+  }
+
+  .hero .heading-1 {
+    font-size: clamp(1.9rem, 10vw, 2.8rem);
+  }
+
+  .card,
+  .modal {
+    padding: 1rem;
+  }
+
+  .hero-media {
+    min-height: 14rem;
+  }
+
+  .card > div,
+  form > div {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 0.45rem;
+  }
+
+  .card > div > output,
+  form > div > .switch,
+  form > div > fieldset,
+  form > div > label[for="field-checkbox"] {
+    justify-self: start;
+  }
+
+  .card > div > input,
+  form > div > .input,
+  form > div > .progressbar,
+  form > div > fieldset {
+    width: 100%;
+  }
+
+  .card output {
+    justify-content: flex-start;
+  }
+
+  fieldset {
+    align-items: stretch;
+  }
+
+  .button.button-primary-small,
+  .card > .button.button-primary-small {
+    width: 100%;
+    place-self: auto;
+    justify-self: stretch;
+    align-self: stretch;
+  }
+
+  .modal-overlay {
+    padding: 0.75rem;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 1.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.25rem;
+  }
+
+  .button {
+    padding: 0.85rem 1rem;
+  }
+
+  .button.button-back {
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-copy > header {
+    gap: 0.65rem;
+  }
+
+  .hero-copy > header img {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  .hero-media {
+    min-height: 11.5rem;
+  }
 }
