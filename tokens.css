@@ -31,8 +31,8 @@
   --gradient-to-dark: hsl(5 70% 40%);
   --gradient-to: hsl(5 70% 50%);
 
-  --gradient-dark: linear-gradient(90deg, var(--gradient-from-dark), var(--gradient-to-dark));
-  --gradient: linear-gradient(90deg, var(--gradient-from), var(--gradient-to));
+  --gradient-dark: linear-gradient(160deg, var(--gradient-from-dark), var(--gradient-to-dark));
+  --gradient: linear-gradient(160deg, var(--gradient-from), var(--gradient-to));
 
   --primary-dark: hsl(12 70% 40%);
   --primary: hsl(12 70% 50%);
@@ -79,9 +79,6 @@
   --text-deactivated: hsl(0 0% 60%);
 
   --separator: rgba(0, 0, 0, 0.1);
-
-  --gradient-dark: linear-gradient(90deg, var(--gradient-from-dark), var(--gradient-to-dark));
-  --gradient: linear-gradient(90deg, var(--gradient-from), var(--gradient-to));
 }
 
 :root[data-primary="primary2"] {
