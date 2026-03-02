@@ -34,8 +34,8 @@
   --gradient-dark: linear-gradient(90deg, var(--gradient-from-dark), var(--gradient-to-dark));
   --gradient: linear-gradient(90deg, var(--gradient-from), var(--gradient-to));
 
-  --primary-dark: hsl(10 70% 40%);
-  --primary: hsl(10 70% 50%);
+  --primary-dark: hsl(12 70% 40%);
+  --primary: hsl(12 70% 50%);
 
   --primary-fill: var(--primary);
   --primary-fill-active: var(--primary-dark);
@@ -511,11 +511,29 @@ select.input {
   background: var(--bg-element);
 }
 
+.switch span::before {
+  content: "\00D7";
+  position: absolute;
+  left: 0.15rem;
+  top: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 1.08rem;
+  height: 1.08rem;
+  color: var(--text-muted);
+  font-size: 0.70rem;
+  font-weight: 800;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
 .switch span::after {
   content: "";
   position: absolute;
   left: 0.15rem;
   top: 50%;
+  z-index: 0;
   width: 1.08rem;
   height: 1.08rem;
   border-radius: 50%;
@@ -526,6 +544,12 @@ select.input {
 .switch input:checked + span {
   border-color: var(--text);
   background: var(--bg-element);
+}
+
+.switch input:checked + span::before {
+  content: "\2713";
+  color: var(--bg-element);
+  transform: translate(1.02rem, -50%);
 }
 
 .switch input:checked + span::after {
